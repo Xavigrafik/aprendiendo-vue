@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import NavBar from '@/components/NavBar.vue'
+import UsandoPiniaStore from '@/components/UsandoPiniaStore.vue'
 import ProductDisplay from '@/components/ProductDisplay.vue'
 import DefaultComponent from '@/components/DefaultComponent.vue'
 
@@ -15,6 +16,7 @@ const updateCart = (id) => {
 <template>
     
         <NavBar></NavBar>
+        <UsandoPiniaStore></UsandoPiniaStore>
 
     <div class="cart">Cart({{ cart.length }})</div>
         <ProductDisplay :premium="premium" @add-to-cart="updateCart"></ProductDisplay>
