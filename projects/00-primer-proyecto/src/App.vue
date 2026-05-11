@@ -1,28 +1,20 @@
 <script setup>
-import { ref } from 'vue'
+import { RouterView } from 'vue-router'
 import NavBar from '@/components/NavBar.vue'
-import UsandoPiniaStore from '@/components/UsandoPiniaStore.vue'
-import ProductDisplay from '@/components/ProductDisplay.vue'
-import DefaultComponent from '@/components/DefaultComponent.vue'
-
-const cart = ref([])
-const premium = ref(true)
-
-const updateCart = (id) => {
-    cart.value.push(id)
-}
 </script>
 
 <template>
     
-        <NavBar></NavBar>
-        <UsandoPiniaStore></UsandoPiniaStore>
+    <NavBar />
 
-    <div class="cart">Cart({{ cart.length }})</div>
-        <ProductDisplay :premium="premium" @add-to-cart="updateCart"></ProductDisplay>
-
-        <div style="display: flex;">
-            <DefaultComponent></DefaultComponent>
-            <DefaultComponent></DefaultComponent>
-        </div>
+    <main>
+        <RouterView />
+    </main>
 </template>
+
+<style scoped>
+/* Estilos globales de layout */
+main {
+    padding: 2rem;
+}
+</style>
