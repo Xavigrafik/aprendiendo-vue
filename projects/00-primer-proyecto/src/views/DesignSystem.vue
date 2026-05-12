@@ -35,28 +35,63 @@ const counter = ref(1);
   <h1>Welcome to the Design System Page</h1>
 
   
+
+
     <Panel title="Botones" :depth="0">
 
         <div style="display:flex; gap:0.5em">
             <Button type="submit" variant="primary">
-                Submit primary
+                Button primary
             </Button>
             <Button type="submit" variant="secondary">
-                Submit secondary
+                Button Secondary
             </Button>
 
             <Button type="submit" variant="tertiary">
-                Submit tertiary
+                Button Tertiary
             </Button>
 
             <Button type="submit" variant="outline">
-                Cancel outline
+                Button Outline
             </Button>
+        </div>
+    </Panel>
+
+    <Panel title="Columns" :depth="0">
+            <div class="grid showCols">
+            <div class="col-12">col-12</div>
+
+            <div class="col-6">col-6</div>
+            <div class="col-6">col-6</div>
+
+            <div class="col-8">col-8</div>
+            <div class="col-4">col-4</div>
+
+            <div class="col-4">col-4</div>
+            <div class="col-4">col-4</div>
+            <div class="col-4">col-4</div>
+
+            <div class="col-3">col-3</div>
+            <div class="col-3">col-3</div>
+            <div class="col-3">col-3</div>
+            <div class="col-3">col-3</div>
+
+
+            <div class="col-2">col-2</div>
+            <div class="col-2">col-2</div>
+            <div class="col-2">col-2</div>
+            <div class="col-2">col-2</div>
+            <div class="col-2">col-2</div>
+            <div class="col-2">col-2</div>
+
         </div>
     </Panel>
 
 </template>
 
 <style>
+
+    .showCols.grid [class*="col-"]{ background-color: #fff; outline:1px solid var(--border-color); }
+
     
 </style>

@@ -45,7 +45,7 @@ const handleClick = (event) => {
 
     --btn-bg: #42b883; 
     --btn-color: white;
-    --darken : 0.1;
+    --darken : 0.2;
     
     padding: 10px 20px;
     border-radius: 6px;
@@ -70,6 +70,11 @@ const handleClick = (event) => {
         background-color: oklch(from var(--btn-bg) calc(l - var(--darken)) c h);
     }
 
+    &:active:not(:disabled) {
+        background-color: oklch(from var(--btn-bg) calc(l - 0.5) c h);
+        border-color:  var(--btn-color);
+    }
+
     &:disabled {
         opacity: 0.5;
         cursor: not-allowed;
@@ -82,6 +87,16 @@ const handleClick = (event) => {
 
     &-secondary {
         --btn-bg: oklch(35% 0.05 250); // Azul oscuro
+    }
+
+    &-tertiary {
+        --btn-bg: transparent;
+        --btn-color: oklch(70% 0.14 150);
+
+        &:hover:not(:disabled) {
+            color: oklch(from var(--btn-color) calc(l - var(--darken)) c h);
+            background-color: oklch(from var(--btn-color) l c h / var(--darken)); 
+        }
     }
 
     &-danger {
@@ -99,14 +114,7 @@ const handleClick = (event) => {
         }
     }
 
-    &-tertiary {
-        --btn-bg: transparent;
-        --btn-color: oklch(70% 0.14 150);
 
-        &:hover:not(:disabled) {
-            background-color: oklch(from var(--btn-bg) l c h /var(--darken));
-        }
-    }
 }
 
 /* Loader */
