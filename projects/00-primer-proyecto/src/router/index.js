@@ -4,6 +4,7 @@ import Home from "../views/Home.vue";
 import Movies from "../views/Movies.vue";
 import CreateMovie from "../views/CreateMovie.vue";
 import MovieDetails from "../views/MovieDetails.vue";
+import DesignSystem from "../views/DesignSystem.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -29,6 +30,11 @@ const router = createRouter({
             path: "/create",
             name: "create",
             component: CreateMovie,
+        },
+        {
+            path: "/design-sistem",
+            name: "design-system",
+            component: DesignSystem,
         },
     ]
 });

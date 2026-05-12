@@ -1,0 +1,49 @@
+// _variables.scss
+
+:root {
+  // --- COLORES PRIMARIOS ---
+  --color-primary: #42b883;       // Verde Vue
+  --color-primary-dark: #35495e;
+  --color-secondary: #3498db;
+
+  // --- COLORES DE ESTADO ---
+  --color-success: #2ecc71;
+  --color-error: #e74c3c;
+  --color-warning: #f1c40f;
+  --color-info: #34495e;
+
+  // --- NEUTROS (Escala de grises) ---
+  --color-white: #ffffff;
+  --color-gray-100: #f8f9fa;
+  --color-gray-500: #6c757d;
+  --color-gray-900: #212529;
+  --color-black: #000000;
+
+  // --- TIPOGRAFÍA ---
+  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-code: 'Fira Code', monospace;
+  
+  --font-size-xs: 0.75rem;   // 12px
+  --font-size-sm: 0.875rem;  // 14px
+  --font-size-base: 1rem;    // 16px
+  --font-size-lg: 1.25rem;   // 20px
+  --font-size-xl: 1.5rem;    // 24px
+
+  // --- ESPACIADO (Spacing) ---
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+
+  // --- OTROS ---
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --shadow-main: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition-fast: 0.2s ease;
+}
+
+// Variables de Sass (opcional, para usar en cálculos de Sass)
+$breakpoint-mobile: 600px;
+$breakpoint-tablet: 900px;
+$breakpoint-desktop: 1200px;

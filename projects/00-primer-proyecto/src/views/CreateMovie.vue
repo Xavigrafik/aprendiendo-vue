@@ -4,6 +4,7 @@
 import { onUpdated, reactive } from "vue";
 import { useMovieStore } from "../stores/movie";
 import router from "../router";
+import Button from "../components/Button.vue";
 
 const movieStore = useMovieStore();
 
@@ -52,7 +53,20 @@ onUpdated(() => {
                type="text"
                id="director" />
 
-        <button>Enviar</button>
+        <Button type="submit" variant="primary">
+            Submit primary
+        </Button>
+        <Button type="submit" variant="secondary">
+            Submit secondary
+        </Button>
+
+        <Button type="submit" variant="tertiary">
+            Submit tertiary
+        </Button>
+
+        <Button type="submit" variant="outline">
+            Cancel outline
+        </Button>
     </form>
 </template>
 
