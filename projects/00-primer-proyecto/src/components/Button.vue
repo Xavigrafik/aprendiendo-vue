@@ -51,7 +51,7 @@ const handleClick = (event) => {
     border-radius: 6px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: var(--transition-out);
     border: 1px solid transparent;
     display: inline-flex;
     align-items: center;
@@ -63,16 +63,18 @@ const handleClick = (event) => {
     color: var(--btn-color);
 
     &:hover:not(:disabled) {
+        transition: var(--transition-in);
         /* Explicación OKLCH:
        lch(from var(--color) l c h) nos permite desestructurar el color original.
        Restamos 0.1 a la luminosidad (L) para que todos se oscurezcan exactamente igual.
-    */
+    */  
         background-color: oklch(from var(--btn-bg) calc(l - var(--darken)) c h);
     }
 
     &:active:not(:disabled) {
         background-color: oklch(from var(--btn-bg) calc(l - 0.5) c h);
         border-color:  var(--btn-color);
+        transition: all 50ms ease;
     }
 
     &:disabled {

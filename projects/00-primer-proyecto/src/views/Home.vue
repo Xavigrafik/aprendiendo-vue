@@ -10,8 +10,16 @@
     const openModal = () => {
         modalIsOpen.value = true;
     };
+    const closeModal = () => {
+        modalIsOpen.value = false;
+    };
 
-    const counter = ref(1);
+    const okCallbackModal = () => {
+        alert('¿Seguro?');
+    };
+
+    const counter = ref(0);
+    
 </script>
 
 <template>
@@ -19,15 +27,19 @@
     <h1>Welcome to the Home Page</h1>
 
     <h2 id="counter">
-        Counter: {{ counter }}
-        <button @click="counter++" id="counter-btn">+</button>
+        <Button @click="counter++">
+            Clicked  {{ counter }} times
+        </Button>
     </h2>
 
     <Button @click="openModal">
         Show modal
     </Button>
 
-    <Modal :open="modalIsOpen" @close="modalIsOpen = false">
+    
+    <!-- =================== MODAL =================== -->
+
+    <Modal :open="modalIsOpen" @close="modalIsOpen = false" size="md">
 
        <template #header>
             <h4>Título del Modal</h4>
@@ -36,7 +48,12 @@
         <p>Este es el contenido principal.</p>
 
         <template #footer>
-            <p>Este es el contenido del footer</p>
+             <Button variant="primary" @click="okCallbackModal">
+                OK
+            </Button>
+             <Button variant="outline" @click="closeModal">
+                Close
+            </Button>
         </template>
     </Modal>
 
