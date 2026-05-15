@@ -4,18 +4,20 @@
     import { ref } from "vue";
     import Button from "../components/Button.vue";
     import Modal from "../components/Modal.vue";
+    import { useToggle } from '@/composables/useToggle';
 
+    const { 
+        value: modalIsOpen, 
+        open: openModal, 
+        close: closeModal 
+    } = useToggle(false);
+    
 
-    const modalIsOpen = ref(true);
-    const openModal = () => {
-        modalIsOpen.value = true;
-    };
-    const closeModal = () => {
-        modalIsOpen.value = false;
-    };
-
-    const okCallbackModal = () => {
-        alert('¿Seguro?');
+    const handleConfirm = () => {
+        const userConfirmed = confirm('¿Seguro?');
+        if (userConfirmed) {
+            modalIsOpen.value = false; 
+        }
     };
 
     const counter = ref(0);
@@ -26,15 +28,9 @@
 
     <h1>Welcome to the Home Page</h1>
 
-    <h2 id="counter">
-        <Button @click="counter++">
-            Clicked  {{ counter }} times
-        </Button>
-    </h2>
+    <Button @click="counter++"> Clicked  {{ counter }} times </Button>
+    <Button @click="openModal"> Show modal </Button>
 
-    <Button @click="openModal">
-        Show modal
-    </Button>
 
     
     <!-- =================== MODAL =================== -->
@@ -48,7 +44,7 @@
         <p>Este es el contenido principal.</p>
 
         <template #footer>
-             <Button variant="primary" @click="okCallbackModal">
+             <Button variant="primary" @click="handleConfirm">
                 OK
             </Button>
              <Button variant="outline" @click="closeModal">

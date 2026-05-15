@@ -4,17 +4,17 @@ import NavBar from '@/components/NavBar.vue'
 </script>
 
 <template>
-    
+
     <NavBar />
 
     <main class="container">
-        <RouterView />
+        <div class="grid">
+            <div class="col-12">
+                <RouterView />
+
+            </div>
+        </div>
     </main>
 </template>
 
-<style scoped>
-/* Estilos globales de layout */
-main {
-    padding: 2rem;
-}
-</style>
+<style scoped></style>

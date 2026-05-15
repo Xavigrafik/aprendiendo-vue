@@ -1,13 +1,22 @@
 <script setup>
-// Definimos las props con validación
+import { computed } from 'vue';
+
 const props = defineProps({
+    to: {
+        type: [String, Object],
+        default: null // Si se pasa una ruta, mutará a enlace
+    },
     type: {
         type: String,
         default: 'button', // 'button', 'submit' o 'reset'
     },
     variant: {
         type: String,
-        default: 'primary', // 'primary', 'secondary', 'tertiary' 'danger', 'outline'
+        default: 'primary', // 'primary', 'secondary', 'tertiary' 'danger', 'outline', icon
+    },
+    size: {
+        type: String,
+        default: 'md', // 'sm', 'md', 'lg'
     },
     disabled: {
         type: Boolean,
@@ -18,6 +27,12 @@ const props = defineProps({
         default: false,
     }
 });
+
+// Calcula dinámicamente la etiqueta a usar
+    const tag = computed(() => {
+        if (props.disabled || props.loading) return 'button';
+        return props.to ? 'router-link' : 'button';
+    });
 
 // Definimos los eventos que puede emitir
 const emit = defineEmits(['click']);
@@ -30,14 +45,17 @@ const handleClick = (event) => {
 </script>
 
 <template>
-    <button :type="type"
-            :disabled="disabled || loading"
-            :class="['btn', `btn-${variant}`, { 'is-loading': loading }]"
-            @click="handleClick">
+    <component 
+        :is="tag" 
+        :to="to"
+        :class="['btn', `btn-${variant}`, `size-${size}`, { 'is-loading': loading }]"
+        :type="type"
+        :disabled="disabled || loading"
+        @click="handleClick">
         <span v-if="loading"
               class="loader"></span>
         <slot v-else />
-    </button>
+    </component>
 </template>
 
 <style lang="scss" scoped>
@@ -48,7 +66,9 @@ const handleClick = (event) => {
     --darken : 0.2;
     
     padding: 10px 20px;
-    border-radius: 6px;
+    margin-bottom: var(--space-sm);
+    margin-right: var(--space-sm);
+    border-radius: var(--radius-sm);
     font-weight: 600;
     cursor: pointer;
     transition: var(--transition-out);
@@ -57,6 +77,8 @@ const handleClick = (event) => {
     align-items: center;
     justify-content: center;
     gap: 8px;
+    text-decoration: none;
+
 
     // Aplicación de colores usando OKLCH para el hover
     background-color: var(--btn-bg);
@@ -105,6 +127,13 @@ const handleClick = (event) => {
         --btn-bg: oklch(60% 0.2 25); // Rojo
     }
 
+    &-icon {
+        padding: 0;
+        width: 40px;
+        height: 40px;
+        border-radius: var(--radius-full);
+    }
+
     &-outline {
         --btn-bg: transparent;
         --btn-color: oklch(70% 0.14 150);
@@ -114,6 +143,34 @@ const handleClick = (event) => {
             background-color: oklch(from var(--btn-color) l c h / var(--darken)); 
             color: oklch(from var(--btn-color) calc(l - var(--darken)) c h);
         }
+    }
+
+    &.size-xs {
+        font-size: 0.65rem;
+        padding: 6px 14px;
+        gap: 6px;
+        font-weight: normal;
+        .loader { width: 12px; height: 12px; }
+    }
+    &.size-sm {
+        font-size: 0.75rem;
+        padding: 6px 14px;
+        gap: 6px;
+        .loader { width: 12px; height: 12px; }
+    }
+    &.size-md {
+        font-size: 0.875rem;
+        padding: 10px 20px;
+        gap: 8px;
+        border-radius: var(--radius-md);
+    }
+    &.size-lg {
+        font-size: 1rem;
+        padding: 14px 28px;
+        gap: 10px;
+        border-radius: var(--radius-md);
+        
+        .loader { width: 20px; height: 20px; }
     }
 
 

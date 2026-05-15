@@ -1,10 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import Home from "../views/Home.vue";
-import Movies from "../views/Movies.vue";
-import CreateMovie from "../views/CreateMovie.vue";
-import MovieDetails from "../views/MovieDetails.vue";
-import DesignSystem from "../views/DesignSystem.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -12,12 +8,22 @@ const router = createRouter({
        {
             path: '/',
             name: 'home',
-            component: () => import('../views/Home.vue')
+            component: Home
         },
         {
             path: '/movies',
             name: 'movies',
             component: () => import('../views/Movies.vue')
+        },
+        {
+            path: '/users',
+            name: 'users',
+            component: () => import('../views/Users.vue'),
+            // children: {
+            //     path: '/user',
+            //     name: 'user',
+            //     component: () => import('../views/User.vue'),
+            // }
         },
         {
             // USAMOS 'title' COMO PARÁMETRO ÚNICO
@@ -29,12 +35,12 @@ const router = createRouter({
         {
             path: "/create",
             name: "create",
-            component: CreateMovie,
+            component: () => import('../views/CreateMovie.vue'),
         },
         {
             path: "/design-sistem",
             name: "design-system",
-            component: DesignSystem,
+            component: () => import('../views/DesignSystem.vue'),
         },
     ]
 });

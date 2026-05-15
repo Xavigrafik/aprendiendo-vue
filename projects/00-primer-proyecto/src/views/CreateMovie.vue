@@ -54,28 +54,20 @@ onUpdated(() => {
                id="director" />
 
         <Button type="submit" variant="primary">
-            Submit primary
-        </Button>
-        <Button type="submit" variant="secondary">
-            Submit secondary
-        </Button>
-
-        <Button type="submit" variant="tertiary">
-            Submit tertiary
-        </Button>
-
-        <Button type="submit" variant="outline">
-            Cancel outline
+            Submit
         </Button>
     </form>
+
 </template>
 
 <style>
 .form {
-    background-color: #e8e8e8 ;
+    background-color: #fff;
+    margin: 20px auto;
+    border: 1px solid var(--border-color);
+    padding: 3rem;
     margin: 20px auto;
     border: 1px solid #ccc;
-    padding: 1rem;
     max-width: 500px;
     text-align: center;
     display: flex;
@@ -83,7 +75,7 @@ onUpdated(() => {
     gap: 1rem;
 
     label {
-        font-size: 20px;
+        font-size: 16px;
         margin-bottom: 0;
     }
     input{
@@ -95,6 +87,8 @@ onUpdated(() => {
             margin-bottom: 2em;
             border-radius: 5px;
             max-width: 100%;
+            background-color: var(--bg-primary);
+            /* background-color: var(--bg-secondary); */
         }
     }
 

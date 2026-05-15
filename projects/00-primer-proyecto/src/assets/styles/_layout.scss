@@ -4,12 +4,12 @@
   max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: var(--space-md);
-  padding-right: var(--space-md);
 }
 
 /* Base del Grid */
 .grid {
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
   display: grid;
   grid-template-columns: repeat(12, 1fr); /* 12 columnas iguales */
   gap: var(--space-md); /* Usa tu variable de espacio */
