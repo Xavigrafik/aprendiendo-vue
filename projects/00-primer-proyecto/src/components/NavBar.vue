@@ -1,8 +1,12 @@
 <script setup>
 
     import { ref } from 'vue'
+    import { onMounted } from 'vue';
     import { useUserStore } from '@/stores/userStore';
     const userStore = useUserStore();
+    onMounted(() => {
+        userStore.fetchUsers(); 
+    });
 </script>
 
 <template>
@@ -13,6 +17,7 @@
             <li class="link"><router-link class="link" :to="{ name: 'create' }">Create Movie</router-link></li>
             <li class="link"><router-link class="link" to="/design-sistem">Design System</router-link></li>
             <li class="link"><router-link class="link" to="/users">Users {{ userStore.totalUsers }}</router-link></li>
+            <li class="link"><router-link class="link" to="/form">Form </router-link></li>
 
         </ul>
     </div>

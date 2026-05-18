@@ -1,0 +1,265 @@
+<script setup>
+    import { ref, watch } from 'vue';
+    import Button from '../components/Button.vue';
+
+
+    const inputText = ref('');
+    const inputPlaceholder = ref('Add a name');
+    const edad = ref(55);
+
+    const bool = ref(false)
+    const radio = ref('');
+    const checkbox = ref([])
+    const select = ref("")
+    const selectMultiple = ref([])
+
+    const errors = ref({})
+    const validate = () => {
+        errors.value = {}
+        if (!inputText.value) errors.value.name = 'Campo obligatorio'
+        if (checkbox.value.length === 0) errors.value.checkbox = 'Elige al menos uno'
+        return Object.keys(errors.value).length === 0
+}
+    
+    const submitHandler = () => {
+        if (!validate()) return;
+        console.log('Formulario válido y enviado:', {
+            name: inputText.value,
+            edad: edad.value,
+            radio: radio.value,
+            checkbox: checkbox.value
+        });
+    };
+
+    watch([inputText, checkbox], () => {
+        validate();
+    });
+    
+    const items = ref([
+            {id:1, label: "10 cosas"},
+            {id:2, label: "Compras"},
+            {id:3, label: "Pintar"}
+        ]);
+
+
+</script>
+
+<template>
+
+    <form @submit.prevent="submitHandler()">
+
+        <div class="field" :class="{ 'has-error': errors.name }">
+            <input v-model.trim="inputText" type="text" :placeholder = "inputPlaceholder" />
+            <p class="debug">radio: {{ radio }}</p>
+        </div>
+        
+        <div class="field-group">
+
+            
+            <p>inputText :{{ inputText ? inputText : inputPlaceholder }}</p>
+            <p v-if="inputText">Hay texto!!!</p>
+            <p v-else>No hay texto en inputText </p>
+        </div>
+
+        <div class="field-group">
+            Number:
+            <input v-model.number="edad" type="number" />
+            <p>castea a Number</p>
+            <div class="field-group"> </div>
+            
+            Lazy: 
+            <input v-model.lazy="inputText" /> 
+            <p>Actualiza en blur, no en cada tecla</p>
+        </div>
+
+        <div class="field-group"> 
+            
+            <label><input type="radio" v-model="radio" value="low">Low</label>
+            <label><input type="radio" v-model="radio" value="medium">Medium</label>
+            <label><input type="radio" v-model="radio" value="high" >High</label>
+            
+            <p>radio: {{ radio }}</p>
+        </div>
+
+        <div class="field-group"> 
+            <label><input type="checkbox" v-model="bool">Vainilla</label>
+            <p>bool: {{ bool }}</p>
+            <div class="field-group"> </div>
+        </div>
+
+        
+        <div class="field-group">
+
+            
+            <label><input type="checkbox" v-model="checkbox" value="vainilla">Vainilla</label>
+            <label><input type="checkbox" v-model="checkbox" value="choco   ">Choco</label>
+            <label><input type="checkbox" v-model="checkbox" value="fresa"  >Fresa</label>
+            <p>checkbox: {{ checkbox }}</p>
+        </div>
+            
+        
+        <div class="field-group"> 
+            
+            <select v-model="select">
+                <option disabled value="">Prefer not to say</option>
+                <option value="1">Uno</option>
+                <option value="2">Dos</option>
+                <option value="3">Tres</option>
+            </select>
+            
+            <p>select: {{ select }}</p>
+
+
+            <select v-model="selectMultiple" multiple>
+                <option value="1">Uno</option>
+                <option value="2">Dos</option>
+                <option value="3">Tres</option>
+            </select>
+            <p>selectMultiple: {{ selectMultiple }}</p>
+        </div>
+            
+        
+        <Button type="submit" :disabled="Object.keys(errors).length > 0">Submit</Button>
+
+        <p>errors: {{errors}}</p>
+    </form>
+
+    <ul>
+        <li v-for="item in items" :key="item.id">
+            {{ item.label }}
+        </li>
+    </ul>
+
+</template>
+
+    <style lang="scss">
+    $border: #d1d5db;
+    $focus: #42b883;
+    $error: #e53e3e;
+    $text: #1a202c;
+    $muted: #6b7280;
+    $bg: #f9fafb;
+
+    form {
+        max-width: 560px;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    // Inputs base compartido
+    %input-base {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid $border;
+        border-radius: 6px;
+        font-size: 0.875rem;
+        color: $text;
+        background: white;
+        outline: none;
+        transition: border-color 0.2s, box-shadow 0.2s;
+
+        &:focus {
+            border-color: $focus;
+            box-shadow: 0 0 0 3px rgba($focus, 0.15);
+        }
+        &::placeholder { color: $muted; }
+    }
+
+    input[type="text"],
+    input[type="number"] {
+        @extend %input-base;
+    }
+
+    select {
+        @extend %input-base;
+        cursor: pointer;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 12px center;
+        padding-right: 32px;
+
+        &[multiple] {
+            height: 3lh;
+            background-image: none;
+            padding-right: 12px;
+            vertical-align: top;
+
+            &:focus,
+            &:active { height: auto; }
+        }
+    }
+
+    // Grupos de radio y checkbox
+    .radio-group,
+    .checkbox-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+
+        label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.875rem;
+            cursor: pointer;
+        }
+        input[type="radio"],
+        input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: $focus;
+            cursor: pointer;
+        }
+    }
+
+    // Campos con error
+    .field {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        &.has-error {
+            input, select { border-color: $error; }
+        }
+    }
+
+    .error-msg {
+        font-size: 0.75rem;
+        color: $error;
+    }
+
+    // Separadores como títulos de sección
+    .field-group {
+        border-top: 1px solid $border;
+        padding-top: 1rem;
+
+        h6 {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: $muted;
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    // Debug output
+    .debug {
+        font-size: 0.75rem;
+        color: $muted;
+        background: $bg;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-family: monospace;
+    }
+</style>
+
+
+
+
+
+
+

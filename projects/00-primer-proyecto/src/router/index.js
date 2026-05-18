@@ -42,6 +42,11 @@ const router = createRouter({
             name: "design-system",
             component: () => import('../views/DesignSystem.vue'),
         },
+        {
+            path: "/form",
+            name: "form",
+            component: () => import('../views/Form.vue'),
+        },
     ]
 });
 

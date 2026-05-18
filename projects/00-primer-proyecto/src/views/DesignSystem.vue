@@ -32,96 +32,115 @@ const counter = ref(1);
 
     </Panel> -->
 
-  <h1>Welcome to the Design System Page</h1>
-
-  
+    <h1>Welcome to the Design System Page</h1>
 
 
-    <Panel title="Botones" :depth="0">
+    <div class="grid-container ">
+        <div class="col-12">
 
-            <div class="btn-docs">
+            <Panel title="Botones"
+                   :depth="0">
 
-                <section class="block">
-                <h5>Sizes</h5>
-                <Button size="xs">Button xs</Button>
-                <Button size="sm">Button sm</Button>
-                <Button size="md">Button md</Button>
-                <Button size="lg">Button lg</Button>
-                </section>
+                <div class="btn-docs">
 
-                <section class="block">
-                <h5>Variants</h5>
-                <Button variant="primary">Primary</Button>
-                <Button variant="secondary">Secondary</Button>
-                <Button variant="tertiary">Tertiary</Button>
-                <Button variant="outline">Outline</Button>
-                <Button variant="danger">Danger</Button>
-                <Button variant="icon">★</Button>
-                </section>
+                    <section class="block">
+                        <h5>Sizes :</h5>
+                        <Button size="xs">Button xs</Button>
+                        <Button size="sm">Button sm</Button>
+                        <Button size="md">Button md</Button>
+                        <Button size="lg">Button lg</Button>
+                    </section>
 
-                <section class="block">
-                <h5>States — loading</h5>
-                <Button variant="primary"   :loading="true">Primary</Button>
-                <Button variant="secondary" :loading="true">Secondary</Button>
-                <Button variant="tertiary"  :loading="true">Tertiary</Button>
-                <Button variant="outline"   :loading="true">Outline</Button>
-                <Button variant="danger"    :loading="true">Danger</Button>
-                </section>
+                    <section class="block">
+                        <h5>Variants :</h5>
+                        <Button variant="primary">Primary</Button>
+                        <Button variant="secondary">Secondary</Button>
+                        <Button variant="tertiary">Tertiary</Button>
+                        <Button variant="outline">Outline</Button>
+                        <Button variant="danger">Danger</Button>
+                        <Button variant="icon">★</Button>
+                    </section>
 
-                <section class="block">
-                <h5>States — disabled</h5>
-                <Button variant="primary"   :disabled="true">Primary</Button>
-                <Button variant="secondary" :disabled="true">Secondary</Button>
-                <Button variant="tertiary"  :disabled="true">Tertiary</Button>
-                <Button variant="outline"   :disabled="true">Outline</Button>
-                <Button variant="danger"    :disabled="true">Danger</Button>
-                </section>
+                    <section class="block">
+                        <h5>Loading :</h5>
+                        <Button variant="primary"
+                                :loading="true">Primary</Button>
+                        <Button variant="secondary"
+                                :loading="true">Secondary</Button>
+                        <Button variant="tertiary"
+                                :loading="true">Tertiary</Button>
+                        <Button variant="outline"
+                                :loading="true">Outline</Button>
+                        <Button variant="danger"
+                                :loading="true">Danger</Button>
+                    </section>
 
-            </div>
-    </Panel>
+                    <section class="block">
+                        <h5>Disabled :</h5>
+                        <Button variant="primary" :disabled="true">Primary</Button>
+                        <Button variant="secondary" :disabled="true">Secondary</Button>
+                        <Button variant="tertiary" :disabled="true">Tertiary</Button>
+                        <Button variant="outline" :disabled="true">Outline</Button>
+                        <Button variant="danger" :disabled="true">Danger</Button>
+                    </section>
 
-    <Panel title="Columns" :depth="0">
-            <div class="grid showCols">
-            <div class="col-12">col-12</div>
+                </div>
+            </Panel>
 
-            <div class="col-6">col-6</div>
-            <div class="col-6">col-6</div>
+            <Panel title="Columns"
+                   :depth="0">
+                <div class="grid-container showCols">
+                    <div class="col-12">col-12</div>
 
-            <div class="col-8">col-8</div>
-            <div class="col-4">col-4</div>
+                    <div class="col-6">col-6</div>
+                    <div class="col-6">col-6</div>
 
-            <div class="col-4">col-4</div>
-            <div class="col-4">col-4</div>
-            <div class="col-4">col-4</div>
+                    <div class="col-8">col-8</div>
+                    <div class="col-4">col-4</div>
 
-            <div class="col-3">col-3</div>
-            <div class="col-3">col-3</div>
-            <div class="col-3">col-3</div>
-            <div class="col-3">col-3</div>
+                    <div class="col-4">col-4</div>
+                    <div class="col-4">col-4</div>
+                    <div class="col-4">col-4</div>
+
+                    <div class="col-3">col-3</div>
+                    <div class="col-3">col-3</div>
+                    <div class="col-3">col-3</div>
+                    <div class="col-3">col-3</div>
 
 
-            <div class="col-2">col-2</div>
-            <div class="col-2">col-2</div>
-            <div class="col-2">col-2</div>
-            <div class="col-2">col-2</div>
-            <div class="col-2">col-2</div>
-            <div class="col-2">col-2</div>
+                    <div class="col-2">col-2</div>
+                    <div class="col-2">col-2</div>
+                    <div class="col-2">col-2</div>
+                    <div class="col-2">col-2</div>
+                    <div class="col-2">col-2</div>
+                    <div class="col-2">col-2</div>
 
+                </div>
+            </Panel>
         </div>
-    </Panel>
-
+    </div>
 </template>
 
 <style>
+.showCols.grid-container [class*="col-"] {
+    background-color: #fff;
+    outline: 1px solid var(--border-color);
+}
 
-    .showCols.grid [class*="col-"]{ background-color: #fff; outline:1px solid var(--border-color); }
+.block {
+    display: flex;
+    gap: 0.5em;
+    align-items: baseline;
+    justify-content: flex-start;
+    border-bottom: 1px solid var(--border-color);
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+    padding-bottom: 0.5rem;
 
-    .block {
-        display: flex;
-        gap: 0.5em;
-        align-items: baseline;
-        justify-content: flex-start;
-        border-bottom: 1px solid var(--border-color);
+    h5 {
+        flex: 1 1 100%;
+        padding-right: 1rem;
+        margin: 0;
     }
-    
+}
 </style>

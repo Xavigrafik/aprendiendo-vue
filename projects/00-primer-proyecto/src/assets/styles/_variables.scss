@@ -40,7 +40,51 @@
   --radius-full: 999em;
   --shadow-main: 0 4px 6px rgba(0, 0, 0, 0.1);
   --transition-fast: 0.2s ease;
-}
+
+    /* Fondos y Superficies */
+    --bg-primary: oklch(98% 0.01 240);    /* Un blanco azulado muy tenue */
+    --bg-secondary: oklch(100% 0 0);      /* Blanco puro */
+    --bg-tertiary: oklch(96% 0.02 240);   /* Gris azulado claro */
+    
+    /* Texto (Contraste 12:1 aprox) */
+    --text-primary: oklch(25% 0.04 240);   /* Azul muy oscuro */
+    --text-secondary: oklch(45% 0.05 240); /* Gris azulado medio */
+    --text-tertiary: oklch(65% 0.04 240);  /* Gris suave */
+    
+    --border-color: oklch(90% 0.03 240);  /* Bordes sutiles */
+
+    /* Semántica (Colores de métricas) */
+    --revenue-color: oklch(65% 0.25 280);    /* Violeta vibrante */
+    --users-color: oklch(65% 0.2 250);      /* Azul eléctrico */
+    --conversion-color: oklch(75% 0.18 80);  /* Naranja/Oro */
+    --orders-color: oklch(70% 0.18 160);    /* Verde esmeralda */
+    
+    --positive-color: var(--orders-color);
+    --negative-color: oklch(65% 0.25 25);    /* Rojo coral */
+
+    /* Gradientes utilizando OKLCH para máxima pureza */
+    --gradient-purple: linear-gradient(135deg, oklch(70% 0.2 280), oklch(50% 0.2 300));
+    --gradient-blue: linear-gradient(135deg, oklch(70% 0.2 250), oklch(50% 0.2 260));
+    --gradient-orange: linear-gradient(135deg, oklch(80% 0.2 80), oklch(65% 0.2 50));
+    --gradient-green: linear-gradient(135deg, oklch(75% 0.2 160), oklch(60% 0.2 140));
+
+    /* Sombras (más naturales con menos negro y más color de base) */
+    --shadow-sm: 0 2px 4px oklch(0% 0 0 / 0.03);
+    --shadow-md: 0 8px 16px oklch(25% 0.04 240 / 0.06);
+    --shadow-lg: 0 16px 40px oklch(25% 0.04 240 / 0.1);
+    
+    --transition-in: 
+        transform 0.1s cubic-bezier(0.33, 1, 0.68, 1),
+        background-color 0.15s ease-out,
+        color 0.15s ease-out,
+        opacity 0.15s ease-out;
+
+    --transition-out: 
+        transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+        background-color 0.3s ease,
+        color 0.3s ease,
+        opacity 0.3s ease;
+    }
 
 // Variables de Sass (opcional, para usar en cálculos de Sass)
 $breakpoint-mobile: 600px;
