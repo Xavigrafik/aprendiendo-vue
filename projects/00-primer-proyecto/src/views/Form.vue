@@ -8,6 +8,7 @@
     const edad = ref(55);
 
     const bool = ref(false)
+    const isFav = ref(false)
     const radio = ref('');
     const checkbox = ref([])
     const select = ref("")
@@ -41,32 +42,31 @@
             {id:3, label: "Pintar"}
         ]);
 
+    const toggleFav = () => {
+        isFav.value = !isFav.value
+    }
 
 </script>
 
 <template>
 
     <form @submit.prevent="submitHandler()">
-
-        <div class="field" :class="{ 'has-error': errors.name }">
-            <input v-model.trim="inputText" type="text" :placeholder = "inputPlaceholder" />
-            <p class="debug">radio: {{ radio }}</p>
-        </div>
         
         <div class="field-group">
-
-            
+            <div class="field" :class="{ 'has-error': errors.name }">
+                <input v-model.trim="inputText" type="text" :placeholder = "inputPlaceholder" />
+            </div>
             <p>inputText :{{ inputText ? inputText : inputPlaceholder }}</p>
-            <p v-if="inputText">Hay texto!!!</p>
-            <p v-else>No hay texto en inputText </p>
+            <small style="color: var(--color-success);"  v-if="inputText">Hay texto!!!</small>
+            <small style="color: var(--color-error);" v-else>No hay texto en inputText </small>
         </div>
 
         <div class="field-group">
             Number:
             <input v-model.number="edad" type="number" />
             <p>castea a Number</p>
-            <div class="field-group"> </div>
-            
+        </div>
+        <div class="field-group">
             Lazy: 
             <input v-model.lazy="inputText" /> 
             <p>Actualiza en blur, no en cada tecla</p>
@@ -84,7 +84,6 @@
         <div class="field-group"> 
             <label><input type="checkbox" v-model="bool">Vainilla</label>
             <p>bool: {{ bool }}</p>
-            <div class="field-group"> </div>
         </div>
 
         
@@ -118,7 +117,12 @@
             <p>selectMultiple: {{ selectMultiple }}</p>
         </div>
             
-        
+         <div class="field-group">
+            <button class="favButton" @click="toggleFav()">
+                {{ isFav ? "💗" : "🤍" }} Toggle fav
+            </button>
+         </div>
+
         <Button type="submit" :disabled="Object.keys(errors).length > 0">Submit</Button>
 
         <p>errors: {{errors}}</p>
@@ -133,12 +137,6 @@
 </template>
 
     <style lang="scss">
-    $border: #d1d5db;
-    $focus: #42b883;
-    $error: #e53e3e;
-    $text: #1a202c;
-    $muted: #6b7280;
-    $bg: #f9fafb;
 
     form {
         max-width: 560px;
@@ -152,19 +150,18 @@
     %input-base {
         width: 100%;
         padding: 8px 12px;
-        border: 1px solid $border;
+        border: 1px solid var(--color-gray-500);
         border-radius: 6px;
         font-size: 0.875rem;
-        color: $text;
+        color: var(--text-primary);
         background: white;
         outline: none;
         transition: border-color 0.2s, box-shadow 0.2s;
 
         &:focus {
-            border-color: $focus;
-            box-shadow: 0 0 0 3px rgba($focus, 0.15);
+            border-color: var(--color-success);
+            box-shadow: 0 0 0 3px rgba(var(--color-success), 0.15);
         }
-        &::placeholder { color: $muted; }
     }
 
     input[type="text"],
@@ -210,7 +207,7 @@
         input[type="checkbox"] {
             width: 16px;
             height: 16px;
-            accent-color: $focus;
+            accent-color: var(--color-success);
             cursor: pointer;
         }
     }
@@ -222,35 +219,46 @@
         gap: 4px;
 
         &.has-error {
-            input, select { border-color: $error; }
+            input, select { border-color: var(--color-error); }
         }
     }
 
     .error-msg {
         font-size: 0.75rem;
-        color: $error;
+        color: var(--color-error);
     }
 
     // Separadores como títulos de sección
     .field-group {
-        border-top: 1px solid $border;
+        border-top: 1px solid var(--color-gray-500);
         padding-top: 1rem;
+        padding: 1em;
+        
+        &:hover{
+            border-top: 1px solid transparent;
+            background-color: #fff;
+        }
 
         h6 {
             font-size: 0.7rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            color: $muted;
             margin-bottom: 0.5rem;
         }
+    }
+
+    .favButton {
+        font-size: 1.5em;
+        border: 0;
+        cursor: pointer;
+        background-color: transparent;
     }
 
     // Debug output
     .debug {
         font-size: 0.75rem;
-        color: $muted;
-        background: $bg;
+        background: var(--bg-primary);
         padding: 4px 8px;
         border-radius: 4px;
         font-family: monospace;
