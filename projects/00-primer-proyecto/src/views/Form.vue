@@ -82,7 +82,7 @@
         </div>
 
         <div class="field-group"> 
-            <label><input type="checkbox" v-model="bool">Vainilla</label>
+            <label><input type="checkbox" v-model="bool">Booleano</label>
             <p>bool: {{ bool }}</p>
         </div>
 
