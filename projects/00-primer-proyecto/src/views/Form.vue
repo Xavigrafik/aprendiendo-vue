@@ -59,17 +59,17 @@
             <p>inputText :{{ inputText ? inputText : inputPlaceholder }}</p>
             <small style="color: var(--color-success);"  v-if="inputText">Hay texto!!!</small>
             <small style="color: var(--color-error);" v-else>No hay texto en inputText </small>
+            <div class="field">
+                Lazy: 
+                <input v-model.lazy="inputText" /> 
+                <p>Actualiza en blur, no en cada tecla</p>
+            </div>
         </div>
 
         <div class="field-group">
             Number:
             <input v-model.number="edad" type="number" />
             <p>castea a Number</p>
-        </div>
-        <div class="field-group">
-            Lazy: 
-            <input v-model.lazy="inputText" /> 
-            <p>Actualiza en blur, no en cada tecla</p>
         </div>
 
         <div class="field-group"> 
