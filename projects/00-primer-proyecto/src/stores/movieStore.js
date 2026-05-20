@@ -6,26 +6,38 @@ export const useMovieStore = defineStore(
     () => {
         const movies = ref([
             {
+                id: 1,
                 title: "Inception",
                 duration: "148 min",
                 director: "Christopher Nolan",
             },
             {
+                id: 2,
                 title: "The Lord of the Rings",
                 duration: "201 min",
                 director: "Peter Jackson",
             },
             {
+                id: 3,
                 title: "Interstellar",
                 duration: "169 min",
                 director: "Christopher Nolan",
             },
         ]);
 
-        const addMovie = (movie) => movies.value.push({ ...movie });
+        // Genera un ID numérico único automático al añadir
+        const addMovie = (movie) => {
+            movies.value.push({ 
+                id: Date.now(), // ID autogenerado único
+                ...movie 
+            });
+        };
 
-        const getMovie = (movieTitle) => {
-            return movies.value.find((movie) => movie.title === movieTitle);
+        // Ahora puedes buscar por ID (más seguro) o por título
+        const getMovie = (identifier) => {
+            return movies.value.find(
+                (movie) => movie.id === Number(identifier) || movie.title === identifier
+            );
         };
 
         return {

@@ -5,7 +5,8 @@ import { ref } from "vue";
 import Button from "../components/Button.vue";
 import Panel from '@/components/panels/Panel.vue';
 
-const counter = ref(1);
+const forzarHover = ref(false);
+
 </script>
 
 <template>
@@ -59,6 +60,20 @@ const counter = ref(1);
                         <Button variant="outline">Outline</Button>
                         <Button variant="danger">Danger</Button>
                         <Button variant="icon">★</Button>
+                    <h5>Variants hover :</h5>
+                        <Button class="is-hovered" variant="primary">Primary</Button>
+                        <Button class="is-hovered" variant="secondary">Secondary</Button>
+                        <Button class="is-hovered" variant="tertiary">Tertiary</Button>
+                        <Button class="is-hovered" variant="outline">Outline</Button>
+                        <Button class="is-hovered" variant="danger">Danger</Button>
+                        <Button class="is-hovered" variant="icon">★</Button>
+                    <h5>Variants active :</h5>
+                        <Button class="active" variant="primary">Primary</Button>
+                        <Button class="active" variant="secondary">Secondary</Button>
+                        <Button class="active" variant="tertiary">Tertiary</Button>
+                        <Button class="active" variant="outline">Outline</Button>
+                        <Button class="active" variant="danger">Danger</Button>
+                        <Button class="active" variant="icon">★</Button>
                     </section>
 
                     <section class="block">

@@ -16,18 +16,7 @@ const router = createRouter({
             component: () => import('../views/Movies.vue')
         },
         {
-            path: '/users',
-            name: 'users',
-            component: () => import('../views/Users.vue'),
-            // children: {
-            //     path: '/user',
-            //     name: 'user',
-            //     component: () => import('../views/User.vue'),
-            // }
-        },
-        {
-            // USAMOS 'title' COMO PARÁMETRO ÚNICO
-            path: '/movies/:title', 
+            path: '/movies/:identifier',
             name: 'movie-details', 
             component: () => import('../views/MovieDetails.vue'),
             props: true 
@@ -38,6 +27,16 @@ const router = createRouter({
             component: () => import('../views/CreateMovie.vue'),
         },
         {
+            path: '/users',
+            name: 'users',
+            component: () => import('../views/Users.vue'),
+        },
+        {
+            path: '/users/:id',
+            name: 'user',
+            component: () => import('../views/User.vue'),
+        },
+        {
             path: "/design-sistem",
             name: "design-system",
             component: () => import('../views/DesignSystem.vue'),
@@ -46,6 +45,11 @@ const router = createRouter({
             path: "/form",
             name: "form",
             component: () => import('../views/Form.vue'),
+        },
+        {
+            path: "/to-do",
+            name: "todo",
+            component: () => import('../views/TodoApp.vue'),
         },
     ]
 });

@@ -1,25 +1,18 @@
 <script setup>
 import { onMounted, onUnmounted } from "vue";
 
-import { useMovieStore } from "../stores/movie";
+import { useMovieStore } from "../stores/movieStore";
 const movieStore = useMovieStore();
 
 
-onMounted(() => {
-    console.log("Movie Component Mounted");
-})
-
-onUnmounted(() => {
-    console.log("Movie Component Unmounted");
-})
 </script>
 
 <template>
     <ul class="movies">
         <li v-for="movie in movieStore.movies" :key="movie.title" class="movie">
             <h2>
-                <router-link :to="{ name: 'movie-details', params: { title: movie.title } }">
-                    {{ movie.title }}
+                <router-link :to="{ name: 'movie-details', params: { identifier: movie.id } }">
+                    {{ movie.id }}. {{ movie.title }} 
                 </router-link>
             </h2>
             <p>Duration: {{ movie.duration }}</p>

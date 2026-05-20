@@ -1,7 +1,7 @@
 <script setup>
     import { RouterView } from 'vue-router'
     import NavBar from '@/components/NavBar.vue'
-import Footer from './components/Footer.vue';
+    import Footer from '@/components/Footer.vue';
 </script>
 
 <template>
@@ -12,7 +12,6 @@ import Footer from './components/Footer.vue';
         <div class="grid-container">
             <div class="col-12">
                 <RouterView />
-
             </div>
         </div>
     </main>
