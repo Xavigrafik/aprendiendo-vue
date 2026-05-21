@@ -16,12 +16,10 @@
         <h3>{{ task.name }}</h3>
         <p>{{ task.description }}</p>
         
-        <div class="task-check">
-            <input type="checkbox" :checked="task.completed" @change="tasksStore.toggleCompleted(task)">
-            <label>
-                {{ task.completed ? 'Done' : 'To do' }}
-            </label>
-        </div>
+       <label class="task-check" :for="task.id">
+            <input :id="task.id" type="checkbox" :checked="task.completed" @change="tasksStore.toggleCompleted(task)" />
+            {{ task.completed ? 'Done' : 'To do' }}
+        </label>
     </div>
 </template>
 
@@ -42,6 +40,16 @@
         &.is-completed {
             opacity: 0.5;
             h3 { text-decoration: line-through; }
+        }
+
+        &-check {
+            padding:var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            display: inline-block;
+            &:hover {
+                background-color: var(--border-color);
+            }
         }
     }
 </style>

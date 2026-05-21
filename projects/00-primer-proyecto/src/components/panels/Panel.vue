@@ -1,14 +1,14 @@
 <script setup>
-defineProps({
-    title: {
-        type: String,
-        default: 'Nuevo Panel'
-    },
-    depth: {
-        type: Number,
-        default: 0
-    }
-});
+    defineProps({
+        title: {
+            type: String,
+            default: 'Nuevo Panel'
+        },
+        depth: {
+            type: Number,
+            default: 0
+        }
+    });
 </script>
 
 <template>

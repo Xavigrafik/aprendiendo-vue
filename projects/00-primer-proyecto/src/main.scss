@@ -1,8 +1,12 @@
 
 @import url("./assets/styles/_layout.scss");
 @import url("./assets/styles/_variables.scss");
+@import url("./assets/styles/_forms.scss");
 
 /* ESTILOS GLOBALES */
+html {
+    scrollbar-gutter: stable;
+}
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
@@ -60,31 +64,6 @@ img {
   filter: grayscale(1);
 }
 
-/* Formularios */
-select, textarea {
-  background-color: var(--bg-secondary);
-  color: var(--text-primary);
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  font-family: inherit;
-  transition: var(--transition);
-}
-
-select {
-  height: 40px;
-  font-size: 1.25rem;
-  cursor: pointer;
-  padding: 0 10px;
-}
-
-textarea {
-  width: 95%;
-  height: 70px;
-  padding: 10px;
-  font-size: 1.25rem;
-  margin-bottom: 20px;
-  resize: vertical;
-}
 
 /* Componentes (Badges) */
 .badge {

@@ -70,6 +70,9 @@
             <li class="link">
                 <router-link to="/to-do">To-Do</router-link>
             </li>
+            <li class="link">
+                <router-link to="/form-preview">Form Preview</router-link>
+            </li>
 
 
         </ul>

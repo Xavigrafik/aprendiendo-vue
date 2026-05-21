@@ -51,6 +51,11 @@ const router = createRouter({
             name: "todo",
             component: () => import('../views/TodoApp.vue'),
         },
+        {
+            path: "/form-preview",
+            name: "form-preview",
+            component: () => import('../views/FormPreview.vue'),
+        },
     ]
 });
 

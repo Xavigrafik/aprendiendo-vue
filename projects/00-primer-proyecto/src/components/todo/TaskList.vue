@@ -1,36 +1,37 @@
 <script setup>
     import { ref } from 'vue';
-    import Button from '../Button.vue';
     import { storeToRefs } from 'pinia';
+
+    import Button from '@/components/Button.vue';
     import Task from '@/components/todo/Task.vue';
+    import { useToggle } from '@/composables/useToggle';
+    import addTaskForm from '@/components/todo/addTaskForm.vue';
+    
+    import { useModalStore } from '@/stores/modalStore';
+    const modalStore = useModalStore();
+    const addTaskModal = () => {
+    modalStore.open({
+        type: 'component',
+        title: 'Añadir tarea:',
+        cancelBtnText: 'hidden', 
+        component: addTaskForm,
+    });
+};  
+
     import { useTasksStore } from '@/stores/tasksStore';
     const tasksStore = useTasksStore();
-    const { tasks } = storeToRefs(tasksStore);
+    const { filteredTasks, addTask } = storeToRefs(tasksStore);
 
-    const newTask = ref({
-        name: "",
-        description: "",
-    });
 </script>
 
 <template>
     <section>
+        <Button @click="addTaskModal"> Add task </Button>
         <div class="tasksList col-12">
-            <Task v-for="task in tasks" :key="task.id" :task="task"></Task>
-        </div>
-
-        <div class="add-task">
-            <h3>Add new task</h3>
-
-            <input v-model="newTask.name" type="text" name="title" placeholder="Enter a title..">
-            <br>
-
-            <textarea v-model="newTask.description" name="description" rows="4"
-                placeholder="Enter a description.."></textarea>
-
-            <!-- <Button @click="handleAddTask">Add task</Button> -->
+            <Task v-for="task in filteredTasks" :key="task.id" :task="task"></Task>
         </div>
     </section>
+    <!-- <addTaskForm></addTaskForm> -->
 
 </template>
 

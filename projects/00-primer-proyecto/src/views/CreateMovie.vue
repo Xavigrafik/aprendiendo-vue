@@ -53,38 +53,5 @@
 </template>
 
 <style>
-    .form {
-        background-color: #fff;
-        margin: 20px auto;
-        border: 1px solid var(--border-color);
-        padding: 3rem;
-        margin: 20px auto;
-        border: 1px solid #ccc;
-        max-width: 500px;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-
-        label {
-            font-size: 16px;
-            margin-bottom: 0;
-        }
-
-        input {
-
-            &[type="text"],
-            &[type="number"] {
-                width: auto;
-                height: 40px;
-                padding: 0 1em;
-                margin-bottom: 2em;
-                border-radius: 5px;
-                max-width: 100%;
-                background-color: var(--bg-primary);
-                /* background-color: var(--bg-secondary); */
-            }
-        }
-
-    }
+   
 </style>

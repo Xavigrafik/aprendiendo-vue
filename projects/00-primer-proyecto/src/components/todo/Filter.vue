@@ -1,18 +1,19 @@
 <script setup>
-import Button from '../Button.vue';
+    import Button from '../Button.vue';
+    import { useTasksStore } from '@/stores/tasksStore';
+    const tasksStore = useTasksStore();
 
- 
 </script>
 
 <template>
-     <section class="filters">
+    <section class="filters">
         <small>Filter by: </small>
         <div class="filter-btns">
-            <Button size="xs" class="active">To-do</Button>
-            <Button size="xs">Done</Button>
-            <Button variant="tertiary" size="xs">x Clear</Button>
+            <Button @click="tasksStore.setFilter('todo')" size="xs" :class="{ active: tasksStore.filterBy === 'todo' }">To-do</Button>
+            <Button @click="tasksStore.setFilter('done')" size="xs" :class="{ active: tasksStore.filterBy === 'done' }">Done</Button>
+            <Button v-if="tasksStore.filterBy" @click="tasksStore.setFilter('')" variant="tertiary" size="xs">x Clear</Button>
         </div>
-     </section>
+    </section>
 </template>
 
 

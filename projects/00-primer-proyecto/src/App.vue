@@ -2,6 +2,7 @@
     import { RouterView } from 'vue-router'
     import NavBar from '@/components/NavBar.vue'
     import Footer from '@/components/Footer.vue';
+    import GlobalModal from '@/components/GlobalModal.vue';
 </script>
 
 <template>
@@ -16,6 +17,7 @@
         </div>
     </main>
     <Footer />
+    <GlobalModal />
 </template>
 
 <style lang="scss">

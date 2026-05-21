@@ -3,14 +3,9 @@
 <script setup>
     import { ref } from "vue";
     import Button from "../components/Button.vue";
-    import Modal from "../components/Modal.vue";
     import { useToggle } from '@/composables/useToggle';
 
-    const { 
-        value: modalIsOpen, 
-        open: openModal, 
-        close: closeModal 
-    } = useToggle(false);
+
     
 
     const handleConfirm = () => {

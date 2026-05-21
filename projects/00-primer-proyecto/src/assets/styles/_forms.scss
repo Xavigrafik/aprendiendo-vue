@@ -1,0 +1,151 @@
+/* ==========================================================================
+   HOJA DE ESTILOS DE FORMULARIOS CENTRALIZADA (_forms.scss)
+   ========================================================================== */
+
+// 1. ESTRUCTURA Y CONTENEDOR DEL FORMULARIO
+form {
+    background-color: #fff;
+    margin: 20px auto;
+    padding-block: 1rem 1.5rem;
+    padding-inline: 3rem;
+    max-width: 500px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; // Espaciado vertical consistente entre bloques de campos
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+    // Subtítulos o textos informativos internos del formulario
+    .form-subtitle {
+        font-size: 14px;
+        color: var(--text-muted, #666);
+        margin-top: -1rem;
+        margin-bottom: 0.5rem;
+    }
+}
+
+// 2. BLOQUES DE CAMPOS (Estructura de alineación)
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    text-align: left;
+}
+
+// Contenedor especial para agrupar inputs en la misma fila (Ej: Email y Edad)
+.form-group-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+}
+
+// 3. ETIQUETAS (LABELS)
+label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+    color: var(--text-primary, #333);
+    margin-bottom: 0;
+}
+
+// 4. ENTRADAS DE DATOS GLOBALES (Texto, Email, Select, Textarea, etc.)
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+select,
+textarea {
+    width: 100%;
+    max-width: 100%;
+    height: 44px; // Altura estándar para accesibilidad móvil
+    padding: 0 1em;
+    border: 1px solid var(--border-color, #ccc);
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: var(--bg-primary, #f9f9f9);
+    color: var(--text-main, #000);
+    font-family: inherit;
+    font-size: 16px; // Evita el zoom automático en Safari iOS
+    transition: border-color var(--transition-in, 0.2s),
+        box-shadow var(--transition-in, 0.2s),
+        background-color var(--transition-in, 0.2s);
+
+    &::placeholder {
+        color: var(--text-muted, #999);
+        opacity: 0.8;
+    }
+
+    &:focus {
+        outline: none;
+        border-color: var(--color-primary, #16c0b0);
+        box-shadow: 0 0 0 3px var(--color-primary-alpha, rgba(22, 192, 176, 0.15));
+        background-color: #fff;
+    }
+
+    &:disabled {
+        background-color: var(--bg-disabled, #e0e0e0);
+        color: var(--text-disabled, #777);
+        cursor: not-allowed;
+        opacity: 0.6;
+    }
+}
+
+// 5. ADAPTACIONES PARTICULARES (Textarea y Select)
+textarea {
+    height: auto;
+    min-height: 100px;
+    padding: 0.75em 1em;
+    resize: vertical;
+}
+
+select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+    background-repeat: no-repeat;
+    background-position: right 1em center;
+    background-size: 16px;
+    padding-right: 2.5em;
+}
+
+// Ocultar flechas nativas en inputs numéricos
+input[type="number"] {
+    -moz-appearance: textfield;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+}
+
+// 6. CAMPOS DE SELECCIÓN (Checkboxes y Radio Buttons)
+.radio-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding-top: 0.25rem;
+}
+
+// Clase para envolver el input nativo + texto del Checkbox/Radio
+.option-label {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 400;
+    font-size: 15px;
+    cursor: pointer;
+
+    input[type="radio"],
+    input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        margin: 0;
+        cursor: pointer;
+        accent-color: var(--color-primary);
+    }
+}
