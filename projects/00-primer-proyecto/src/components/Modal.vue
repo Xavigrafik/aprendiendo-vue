@@ -36,9 +36,8 @@ onMounted(() => {
 
 <template>
     <Teleport to="body">
-        <Transition name="fade">
+        <Transition name="overlay">
             <div v-if="open" class="modal-overlay" @click.self="emit('close')">
-                <Transition name="zoom" appear>
                     <div v-if="open" :class="['modal-content', `size-${size}`]">
                         <header class="modal-header">
                             <slot name="header" />
@@ -53,7 +52,6 @@ onMounted(() => {
                             <slot name="footer"></slot>
                         </footer>
                     </div>
-                </Transition>
             </div>
         </Transition>
     </Teleport>
@@ -61,14 +59,29 @@ onMounted(() => {
 
 <style>
 
-    /* Fade para el fondo oscuro */
-    .fade-enter-active{} .fade-leave-active { transition: opacity 0.3s ease; }
-    .fade-enter-from, .fade-leave-to { opacity: 0; }
+    /* ANIMACION TRANSITION  */
 
-    /* Zoom para la caja blanca */
-    .zoom-enter-active{transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);}
-    .zoom-leave-active { transition: all 0.2s ease-in; }
-    .zoom-enter-from, .zoom-leave-to { opacity: 0; transform: scale(0.9) translateY(30px); }
+
+    .content-enter-from,
+    .content-leave-to {
+    opacity: 0;
+    }
+
+    .content-enter-active,
+    .content-leave-active {
+    transition: opacity 0.3s ease;
+    }
+
+    .content-enter-to,
+    .content-leave-from {
+    opacity: 1;
+    }
+
+    /* ANIMACION CONTENT  */
+    /* .content-enter-active{transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);}
+    .content-leave-active { transition: all 0.2s ease-in; }
+    .content-enter-from { opacity: 1; transform: scale(0.9) translateY(30px); } 
+    .content-leave-to { opacity: 0; transform: scale(0.9) translateY(30px); } */
 
     .modal-overlay {
         background-color: rgba(0, 0, 0, 0.66);

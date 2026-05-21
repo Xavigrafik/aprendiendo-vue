@@ -18,70 +18,115 @@
 
 <template>
     <Teleport to="body">
-        <div v-if="modalStore.isOpen" class="modal-overlay" @click="modalStore.handleCancel">
-            <div class="modal-container" @click.stop>
+        <Transition name="fade">
+            <div v-if="modalStore.isOpen" class="modal-overlay" @click="modalStore.handleCancel">
+                <div class="modal-container" @click.stop>
 
-                <header class="modal-header">
-                    <h2>{{ modalStore.title }}</h2>
-                    <button class="close-btn" @click="modalStore.handleCancel">✖</button>
-                </header>
+                    <header class="modal-header">
+                        <h2>{{ modalStore.title }}</h2>
+                        <button class="close-btn" @click="modalStore.handleCancel">✖</button>
+                    </header>
 
-               <main class="modal-body">
-                <p v-if="modalStore.type === 'info' || modalStore.type === 'confirm'">
-                    {{ modalStore.message }}
-                </p>
+                    <Transition name="body" appear>
 
-                <div v-else-if="modalStore.type === 'custom'" v-html="modalStore.customHtml"></div>
+                        <main class="modal-body">
+                            <p v-if="modalStore.type === 'info' || modalStore.type === 'confirm'">
+                                {{ modalStore.message }}
+                            </p>
+                            
+                            <div v-else-if="modalStore.type === 'custom'" v-html="modalStore.customHtml"></div>
 
-                <component 
-                    v-else-if="modalStore.type === 'component'"
-                    :is="modalStore.component" 
-                    v-bind="modalStore.componentProps" ></component>
-
-            </main>
-
-                <footer class="modal-footer" v-if="modalStore.type !== 'component'">
-                    <Button 
-                        v-if="modalStore.type === 'info'" 
-                        class="btn btn-primary" 
-                        @click="modalStore.handleCancel"
-                    >
-                        {{ modalStore.cancelBtnText || 'Aceptar' }}
-                    </Button>
-
-                    <div v-if="modalStore.type === 'confirm'" class="buttons-group">
-                        <Button @click="modalStore.handleConfirm">
-                            {{ modalStore.confirmBtnText || 'Confirmar' }}
-                        </Button>
-                        <Button variant="outline" @click="modalStore.handleCancel">
-                            {{ modalStore.cancelBtnText || 'Cancelar' }}
-                        </Button>
-                    </div>
+                            <component 
+                            v-else-if="modalStore.type === 'component'"
+                            :is="modalStore.component" 
+                            v-bind="modalStore.componentProps" ></component>
+                            
+                        </main>
+                    </Transition>
                     
-                    <Button 
-                        v-if="modalStore.type === 'custom'" 
-                        variant="outline"
-                        @click="modalStore.handleCancel"
-                    >
-                        {{ modalStore.cancelBtnText || 'Cerrar' }}
-                    </Button>
+                    <footer class="modal-footer" v-if="modalStore.type !== 'component'">
+                        <Button 
+                            v-if="modalStore.type === 'info'" 
+                            class="btn btn-primary" 
+                            @click="modalStore.handleCancel"
+                        >
+                            {{ modalStore.cancelBtnText || 'Aceptar' }}
+                        </Button>
 
-                    <!-- <Button 
-                        v-if="modalStore.type === 'component'" 
-                        variant="outline"
-                        @click="modalStore.handleCancel"
-                    >
-                        {{ modalStore.cancelBtnText || 'Cerrar'   }}
-                    </Button> -->
+                        <div v-if="modalStore.type === 'confirm'" class="buttons-group">
+                            <Button @click="modalStore.handleConfirm">
+                                {{ modalStore.confirmBtnText || 'Confirmar' }}
+                            </Button>
+                            <Button variant="outline" @click="modalStore.handleCancel">
+                                {{ modalStore.cancelBtnText || 'Cancelar' }}
+                            </Button>
+                        </div>
+                        
+                        <Button 
+                            v-if="modalStore.type === 'custom'" 
+                            variant="outline"
+                            @click="modalStore.handleCancel"
+                        >
+                            {{ modalStore.cancelBtnText || 'Cerrar' }}
+                        </Button>
 
-                </footer>
+                        <!-- <Button 
+                            v-if="modalStore.type === 'component'" 
+                            variant="outline"
+                            @click="modalStore.handleCancel"
+                        >
+                            {{ modalStore.cancelBtnText || 'Cerrar'   }}
+                        </Button> -->
 
+                    </footer>
+
+                </div>
             </div>
-        </div>
+        </Transition>
     </Teleport>
 </template>
 
 <style lang="scss" scoped>
+
+    /* 🛠️ 1. CONFIGURAMOS LOS TIEMPOS (Las clases -active siempre controlan el reloj) */
+    .overlay-enter-active {
+        transition: opacity 0.4s ease-in;
+    }
+    .overlay-leave-active {
+        transition: opacity 0.2s ease-out;
+    }
+
+    /* 🛠️ 2. CONFIGURAMOS LOS ESTADOS (¿De dónde parte y a dónde llega?) */
+    .overlay-enter-from,
+    .overlay-leave-to {
+        opacity: 0; /* Invisibles en el punto de partida de entrada y en el punto final de salida */
+    }
+
+    .overlay-enter-to,
+    .overlay-leave-from {
+        opacity: 1; /* Totalmente visibles cuando termina de entrar y cuando empieza a salir */
+    }
+    .body-enter-from {  }
+    .body-enter-active {
+        animation: bounce-in 0.85s backwards;
+    }
+
+    @keyframes bounce-in {
+        0% {
+            opacity: 0;
+            transform: scale(0);
+        }
+        50% {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+
+
     .modal-overlay {
         position: fixed;
         top: 0;
@@ -97,6 +142,7 @@
 
     .modal-container {
         background: white;
+        margin-top: 30px;
         padding: 0;
         overflow: hidden;
         border-radius: var(--radius-md);
