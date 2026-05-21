@@ -21,7 +21,7 @@
 </template>
 
 <style lang="scss">
-    @import "@/main.scss";
+    @use "@/main.scss";
 
     #app {
         display: flex;
