@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue';
 
+
 // --- ESTADO REACTIVO ---
 const contador = ref(0);
 const nombreUsuario = ref('Maquetador Senior');

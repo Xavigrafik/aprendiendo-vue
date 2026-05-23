@@ -45,7 +45,7 @@
             `
         });
     };
-    const abrirComponente = () => {
+    const º = () => {
         modalStore.open({
             type: 'component',
             title: 'Inyecta un component',
@@ -78,6 +78,7 @@
                 <div class="btn-docs">
 
                     <section class="block">
+                        
                         <h5>Sizes :</h5>
                         <Button size="xs">Button xs</Button>
                         <Button size="sm">Button sm</Button>
@@ -86,13 +87,24 @@
                     </section>
 
                     <section class="block">
+                        
                         <h5>Variants :</h5>
+                        
                         <Button variant="primary">Primary</Button>
                         <Button variant="secondary">Secondary</Button>
                         <Button variant="tertiary">Tertiary</Button>
                         <Button variant="outline">Outline</Button>
                         <Button variant="danger">Danger</Button>
                         <Button variant="icon">★</Button>
+                        
+                        <h5>Pill :</h5>
+                        <Button pill variant="primary">Primary</Button>
+                        <Button pill variant="secondary">Secondary</Button>
+                        <Button pill variant="tertiary">Tertiary</Button>
+                        <Button pill variant="outline">Outline</Button>
+                        <Button pill variant="danger">Danger</Button>
+                        <Button pill variant="icon">★</Button>
+                        
                         <h5>Variants hover :</h5>
                         <Button class="is-hovered" variant="primary">Primary</Button>
                         <Button class="is-hovered" variant="secondary">Secondary</Button>
@@ -100,6 +112,7 @@
                         <Button class="is-hovered" variant="outline">Outline</Button>
                         <Button class="is-hovered" variant="danger">Danger</Button>
                         <Button class="is-hovered" variant="icon">★</Button>
+                        
                         <h5>Variants active :</h5>
                         <Button class="active" variant="primary">Primary</Button>
                         <Button class="active" variant="secondary">Secondary</Button>
@@ -110,6 +123,7 @@
                     </section>
 
                     <section class="block">
+                        
                         <h5>Loading :</h5>
                         <Button variant="primary" :loading="true">Primary</Button>
                         <Button variant="secondary" :loading="true">Secondary</Button>
@@ -119,6 +133,7 @@
                     </section>
 
                     <section class="block">
+                        
                         <h5>Disabled :</h5>
                         <Button variant="primary" :disabled="true">Primary</Button>
                         <Button variant="secondary" :disabled="true">Secondary</Button>
@@ -128,6 +143,28 @@
                     </section>
 
                 </div>
+            </Panel>
+
+            <Panel title="Colors" :depth="3">
+                <section class="block">
+
+                    <div class="color" style="background-color:var(--color-primary)">primary</div>
+                    <div class="color" style="background-color:var(--color-primary-dark)">primary-dark</div>
+                    <div class="color" style="background-color:var(--color-secondary)">secondary</div>
+                    <div class="divider"></div>
+                    <div class="color" style="background-color:var(--color-success)">success</div>
+                    <div class="color" style="background-color:var(--color-error)">error</div>
+                    <div class="color" style="background-color:var(--color-warning)">warning</div>
+                    <div class="color" style="background-color:var(--color-info)">info</div>
+                    <div class="divider"></div>
+
+                    <div class="color" style="background-color:var(--color-white)">white</div>
+                    <div class="color" style="background-color:var(--color-gray-100)">gray-100</div>
+                    <div class="color" style="background-color:var(--color-gray-500)">gray-500</div>
+                    <div class="color" style="background-color:var(--color-gray-900)">gray-900</div>
+                    <div class="color" style="background-color:var(--color-black)">black</div>
+
+                </section>
             </Panel>
 
             <Panel title="Columns" :depth="0">
@@ -184,6 +221,22 @@
             flex: 1 1 100%;
             padding-right: 1rem;
             margin: 0;
+        }
+
+        .divider {
+            border: 1px solid var(--border-color);
+            flex: 0 0 100%;
+        }
+
+        .color {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            border-radius: var(--radius-sm);
+            align-items: flex-end;
+            justify-content: center;
+            color: #fff;
+            padding-bottom: 0.5rem;
         }
     }
 </style>

@@ -14,6 +14,10 @@
             type: String,
             default: 'primary', // 'primary', 'secondary', 'tertiary' 'danger', 'outline', icon
         },
+        pill: {
+            type: Boolean,
+            default: false, 
+        },
         size: {
             type: String,
             default: 'md', // 'sm', 'md', 'lg'
@@ -45,7 +49,7 @@
 </script>
 
 <template>
-    <component :is="tag" :to="to" :class="['btn', `btn-${variant}`, `size-${size}`, { 'is-loading': loading }]"
+    <component :is="tag" :to="to" :class="['btn', `btn-${variant}`, `size-${size}`, { 'is-loading': loading },  { 'rounded-pill': pill }]"
         :type="type" :disabled="disabled || loading" @click="handleClick">
         <span v-if="loading" class="loader"></span>
         <slot v-else />
@@ -55,9 +59,7 @@
 <style lang="scss" scoped>
     .btn {
 
-        --btn-bg: #42b883;
-        --btn-color: white;
-        --darken: 0.2;
+
 
         padding: 10px 20px;
         margin-bottom: var(--space-sm);
@@ -78,26 +80,34 @@
         background-color: var(--btn-bg);
         color: var(--btn-color);
 
+        &:focus:not(:disabled) {
+            box-shadow: 0 0 0 .2rem oklch(from var(--btn-bg) calc(l + 0.12) c h);
+        }
+
         &.is-hovered:not(:disabled),
         &:hover:not(:disabled) {
             transition: var(--transition-in);
             /* Explicación OKLCH:
-       lch(from var(--color) l c h) nos permite desestructurar el color original.
-       Restamos 0.1 a la luminosidad (L) para que todos se oscurezcan exactamente igual.
-    */
-            background-color: oklch(from var(--btn-bg) calc(l - var(--darken)) c h);
+            lch(from var(--color) l c h) nos permite desestructurar el color original.
+            Restamos 0.1 a la luminosidad (L) para que todos se oscurezcan exactamente igual.
+            */
+            background-color: oklch(from var(--btn-bg) calc(l - var(--darkenBtn)) c h);
         }
 
         &.active:not(:disabled) {
             background-color: oklch(from var(--btn-bg) calc(l - 0.33) c h);
             border-color: var(--btn-color);
             transition: all 50ms ease;
-            box-shadow: 0px 0px 0px 2px var(--color-success);
+            // box-shadow: 0px 0px 0px 2px  oklch(from var(--btn-bg) calc(l - 0.33) c h);
         }
 
         &:disabled {
             opacity: 0.5;
             cursor: not-allowed;
+        }
+
+        &.rounded-pill {
+            border-radius: var(--radius-full)!important;
         }
 
         // Variantes definiendo solo el color base
@@ -107,21 +117,23 @@
 
         &-secondary {
             --btn-bg: oklch(35% 0.05 250); // Azul oscuro
+            --btn-bg: oklch(from var(--color-secondary) l c h);
         }
 
         &-tertiary {
             --btn-bg: transparent;
-            --btn-color: oklch(70% 0.14 150);
+            --btn-color: oklch(from var(--color-primary) l c h);
 
             &.is-hovered:not(:disabled),
             &:hover:not(:disabled) {
-                color: oklch(from var(--btn-color) calc(l - var(--darken)) c h);
-                background-color: oklch(from var(--btn-color) l c h / var(--darken));
+                color: oklch(from var(--btn-color) calc(l - var(--darkenBtn)) c h);
+                box-shadow: 0 0 0 .2rem oklch(from var(--btn-bg) calc(l - 0.01) c h);
             }
         }
 
         &-danger {
-            --btn-bg: oklch(60% 0.2 25); // Rojo
+            --btn-bg: oklch(60% 0.2 25);
+            --btn-bg: oklch( from var(--color-error) l c h ); 
         }
 
         &-icon {
@@ -138,8 +150,8 @@
 
             &.is-hovered:not(:disabled),
             &:hover:not(:disabled) {
-                background-color: oklch(from var(--btn-color) l c h / var(--darken));
-                color: oklch(from var(--btn-color) calc(l - var(--darken)) c h);
+                background-color: oklch(from var(--btn-color) l c h / var(--darkenBtn));
+                color: oklch(from var(--btn-color) calc(l - var(--darkenBtn)) c h);
             }
         }
 
