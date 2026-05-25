@@ -21,32 +21,16 @@
 
 <template>
 
-    <h1>Welcome to the Home Page</h1>
-
-    <Button @click="counter++"> Clicked  {{ counter }} times </Button>
-    <Button @click="openModal"> Show modal </Button>
-
-
-    
-    <!-- =================== MODAL =================== -->
-
-    <Modal :open="modalIsOpen" @close="modalIsOpen = false" size="md">
-
-       <template #header>
-            <h4>Título del Modal</h4>
-        </template>
-
-        <p>Este es el contenido principal.</p>
-
-        <template #footer>
-             <Button variant="primary" @click="handleConfirm">
-                OK
-            </Button>
-             <Button variant="outline" @click="closeModal">
-                Close
-            </Button>
-        </template>
-    </Modal>
+    <div class="row centered" style="height: 100vh;">
+        <div class="col-10">
+            
+            <h1>Welcome to the Home Page</h1>
+            
+            <Button @click="counter++"> Clicked  {{ counter }} times </Button>
+            <Button @click="openModal"> Show modal </Button>
+        </div>
+        
+    </div>
 
 </template>
 
