@@ -70,7 +70,7 @@
         font-weight: 600;
         cursor: pointer;
         transition: var(--transition-out);
-        border: 1px solid transparent;
+        border: 2px solid transparent;
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -78,6 +78,7 @@
         text-decoration: none;
         background-color: var(--btn-bg);
         color: var(--btn-color);
+        box-shadow: 0 0 0 .2rem  var(--btn-bg);
 
         &:focus:not(:disabled) {
             box-shadow: 0 0 0 .2rem oklch(from var(--btn-bg) calc(l + 0.12) c h);
@@ -98,11 +99,13 @@
             background-color: oklch(from var(--btn-bg) calc(l - var(--darkenBtn)) c h);
         }
 
+        &:active:not(:disabled),
         &.active:not(:disabled) {
             background-color: oklch(from var(--btn-bg) calc(l - 0.33) c h);
-            border-color: var(--btn-color);
+            border-color: oklch(from var(--btn-bg) calc(l - 0.1) c h);
             transition: all 50ms ease;
-            // box-shadow: 0px 0px 0px 2px  oklch(from var(--btn-bg) calc(l - 0.33) c h);
+            box-shadow: 0px 0px 0px 2px  oklch(from var(--btn-bg) calc(l - 0.33) c h);
+            outline: none;
         }
 
         &:disabled {
@@ -134,10 +137,31 @@
                 background-color: oklch(from var(--btn-color) l c h / var(--darkenBtn));
                 box-shadow: 0 0 0 .2rem oklch(from var(--btn-bg) calc(l - 0.01) c h);
             }
+            &:focus-visible:not(:disabled) {
+                    box-shadow: 0 0 0 2px oklch(from var(--color-primary) calc(l + 0.25) c h);
+                    outline: 3px solid var(--color-primary);
+                    outline-offset: 2px;
+            }
         }
-
+        &-outline {
+            --btn-bg: transparent;
+            --btn-color: oklch(70% 0.14 150);
+            box-shadow: 0 0 0 2px var(--color-primary);
+            border-width: 0px;
+            &.is-hovered:not(:disabled),
+            &:hover:not(:disabled) {
+                background-color: oklch(from var(--btn-color) l c h / var(--darkenBtn));
+                color: oklch(from var(--btn-color) calc(l - var(--darkenBtn)) c h);
+            }
+            &:focus-visible:not(:disabled) {
+                    box-shadow: 0 0 0 2px oklch(from var(--color-primary) calc(l + 0.25) c h);
+                    outline: 3px solid var(--color-primary);
+                    outline-offset: 2px;
+            }
+        }
+        
         &-danger {
-            --btn-bg: oklch(60% 0.2 25);
+            --btn-bg: var(--color-error);
             --btn-bg: oklch( from var(--color-error) l c h ); 
         }
 
@@ -149,17 +173,6 @@
             border-radius: var(--radius-full);
         }
 
-        &-outline {
-            --btn-bg: transparent;
-            --btn-color: oklch(70% 0.14 150);
-            border-color: var(--btn-color);
-
-            &.is-hovered:not(:disabled),
-            &:hover:not(:disabled) {
-                background-color: oklch(from var(--btn-color) l c h / var(--darkenBtn));
-                color: oklch(from var(--btn-color) calc(l - var(--darkenBtn)) c h);
-            }
-        }
 
         &.size-xs {
             font-size: 0.65rem;
