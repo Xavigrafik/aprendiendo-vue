@@ -2,6 +2,7 @@
     // --- COLORES PRIMARIOS ---
     --color-primary: #42b883; // Verde Vue
     --color-primary-dark: #35495e;
+    --color-primary-light: #66ecb0;
     --color-secondary: #263c54;
 
     // --- COLORES DE ESTADO ---
@@ -26,6 +27,12 @@
     --font-size-base: 1rem; // 16px
     --font-size-lg: 1.25rem; // 20px
     --font-size-xl: 1.5rem; // 24px
+
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+    --font-weight-black: 900;
 
     // --- ESPACIADO (Spacing) ---
     --space-xs: 4px;
@@ -103,10 +110,12 @@
         color 0.3s ease,
         opacity 0.3s ease;
 
+    // BREAKPOINTS
+    --bp-sm: 576px;
+    --bp-md: 768px;
+    --bp-lg: 992px;
+    --bp-xl: 1200px;
+    --bp-xxl: 1400px;
+    --gutter: 1rem; /* El espacio entre columnas (padding) */
         
 }
-
-// Variables de Sass (opcional, para usar en cálculos de Sass)
-$breakpoint-mobile: 600px;
-$breakpoint-tablet: 900px;
-$breakpoint-desktop: 1200px;

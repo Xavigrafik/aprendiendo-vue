@@ -1,50 +1,78 @@
 /* Contenedor principal */
-.container {
+// .container {
+//     width: 100%;
+//     padding-right: calc(var(--gutter) * .5);
+//     padding-left: calc(var(--gutter) * .5);
+//     margin-right: auto;
+//     margin-left: auto;
+// }
+
+
+/* 2. Estructura de la Fila (Row) */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: calc(var(--gutter) * -1);
+  margin-left: calc(var(--gutter) * -1);
+    &.centered {
+        justify-content: center;
+    }
+}
+
+/* 3. Comportamiento Base de todas las Columnas */
+[class*="col-"] {
+  box-sizing: border-box;
+  flex-shrink: 0;
   width: 100%;
-  max-width: 1280px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 100%;
+  padding-right: var(--gutter);
+  padding-left: var(--gutter);
 }
 
-/* Base del Grid */
-.grid-container {
-    padding-left: var(--space-md);
-    padding-right: var(--space-md);
-  display: grid;
-  grid-template-columns: repeat(12, 1fr); /* 12 columnas iguales */
-  gap: var(--space-md); /* Usa tu variable de espacio */
+/* 📱 4. Columnas para Móvil (Móvil Primero) */
+.col-1  { flex: 0 0 auto; width: 8.333333%; }
+.col-2  { flex: 0 0 auto; width: 16.666667%; }
+.col-3  { flex: 0 0 auto; width: 25%; }
+.col-4  { flex: 0 0 auto; width: 33.333333%; }
+.col-5  { flex: 0 0 auto; width: 41.666667%; }
+.col-6  { flex: 0 0 auto; width: 50%; }
+.col-7  { flex: 0 0 auto; width: 58.333333%; }
+.col-8  { flex: 0 0 auto; width: 66.666667%; }
+.col-9  { flex: 0 0 auto; width: 75%; }
+.col-10 { flex: 0 0 auto; width: 83.333333%; }
+.col-11 { flex: 0 0 auto; width: 91.666667%; }
+.col-12 { flex: 0 0 auto; width: 100%; }
+
+/* 📑 5. Breakpoints con Media Queries Nativas */
+
+/* --- TABLETS (md) --- */
+@media (min-width: 768px) {
+  .col-md-1  { flex: 0 0 auto; width: 8.333333%; }
+  .col-md-2  { flex: 0 0 auto; width: 16.666667%; }
+  .col-md-3  { flex: 0 0 auto; width: 25%; }
+  .col-md-4  { flex: 0 0 auto; width: 33.333333%; }
+  .col-md-5  { flex: 0 0 auto; width: 41.666667%; }
+  .col-md-6  { flex: 0 0 auto; width: 50%; }
+  .col-md-7  { flex: 0 0 auto; width: 58.333333%; }
+  .col-md-8  { flex: 0 0 auto; width: 66.666667%; }
+  .col-md-9  { flex: 0 0 auto; width: 75%; }
+  .col-md-10 { flex: 0 0 auto; width: 83.333333%; }
+  .col-md-11 { flex: 0 0 auto; width: 91.666667%; }
+  .col-md-12 { flex: 0 0 auto; width: 100%; }
 }
 
-/* Utilidades de columnas (Responsivas) */
-.col-12  { grid-column: span 12; }
-.col-11  { grid-column: span 11; }
-.col-10  { grid-column: span 10; }
-.col-9   { grid-column: span 9; }
-.col-8   { grid-column: span 8; }
-.col-7   { grid-column: span 7; }
-.col-6   { grid-column: span 6; }
-.col-5   { grid-column: span 5; }
-.col-4   { grid-column: span 4; }
-.col-3   { grid-column: span 3; }
-.col-2   { grid-column: span 2; }
-
-
-@media (max-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(1, 1fr);
-  }
-  
-  [class*="col-"] {
-    grid-column: span 1 !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(1, 1fr);
-  }
-  
-  [class*="col-"] {
-    grid-column: span 1 !important;
-  }
+/* --- PANTALLAS GRANDES (lg) --- */
+@media (min-width: 992px) {
+  .col-lg-1  { flex: 0 0 auto; width: 8.333333%; }
+  .col-lg-2  { flex: 0 0 auto; width: 16.666667%; }
+  .col-lg-3  { flex: 0 0 auto; width: 25%; }
+  .col-lg-4  { flex: 0 0 auto; width: 33.333333%; }
+  .col-lg-5  { flex: 0 0 auto; width: 41.666667%; }
+  .col-lg-6  { flex: 0 0 auto; width: 50%; }
+  .col-lg-7  { flex: 0 0 auto; width: 58.333333%; }
+  .col-lg-8  { flex: 0 0 auto; width: 66.666667%; }
+  .col-lg-9  { flex: 0 0 auto; width: 75%; }
+  .col-lg-10 { flex: 0 0 auto; width: 83.333333%; }
+  .col-lg-11 { flex: 0 0 auto; width: 91.666667%; }
+  .col-lg-12 { flex: 0 0 auto; width: 100%; }
 }

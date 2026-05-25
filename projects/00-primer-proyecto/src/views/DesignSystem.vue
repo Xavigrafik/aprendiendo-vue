@@ -45,7 +45,7 @@
             `
         });
     };
-    const º = () => {
+    const abrirComponente = () => {
         modalStore.open({
             type: 'component',
             title: 'Inyecta un component',
@@ -58,12 +58,14 @@
 
 <template>
 
-    <h1>Welcome to the Design System Page</h1>
+    
+    
+    <div class="row centered">
+        <div class="col-10">
+            
+            <h1>Welcome to the Design System Page</h1>
 
-
-    <div class="grid-container ">
-        <div class="col-12">
-
+            
             <Panel title="Modales" :depth="0">
                 <section class="block">
                     <Button @click="mostrarAlerta">Info</Button>
@@ -168,31 +170,34 @@
             </Panel>
 
             <Panel title="Columns" :depth="0">
-                <div class="grid-container showCols">
-                    <div class="col-12">col-12</div>
+                    <div class="row centered showCols">
+                        <div class="col-12">col-12</div>
 
-                    <div class="col-6">col-6</div>
-                    <div class="col-6">col-6</div>
+                        <div class="col-6">col-6</div>
+                        <div class="col-6">col-6</div>
 
-                    <div class="col-8">col-8</div>
-                    <div class="col-4">col-4</div>
+                        <div class="col-12 col-md-6">col-12 col-md-6</div>
+                        <div class="col-12 col-md-6">col-12 col-md-6</div>
 
-                    <div class="col-4">col-4</div>
-                    <div class="col-4">col-4</div>
-                    <div class="col-4">col-4</div>
+                        <div class="col-8">col-8</div>
+                        <div class="col-4">col-4</div>
 
-                    <div class="col-3">col-3</div>
-                    <div class="col-3">col-3</div>
-                    <div class="col-3">col-3</div>
-                    <div class="col-3">col-3</div>
+                        <div class="col-4">col-4</div>
+                        <div class="col-4">col-4</div>
+                        <div class="col-4">col-4</div>
+
+                        <div class="col-3">col-3</div>
+                        <div class="col-3">col-3</div>
+                        <div class="col-3">col-3</div>
+                        <div class="col-3">col-3</div>
 
 
-                    <div class="col-2">col-2</div>
-                    <div class="col-2">col-2</div>
-                    <div class="col-2">col-2</div>
-                    <div class="col-2">col-2</div>
-                    <div class="col-2">col-2</div>
-                    <div class="col-2">col-2</div>
+                        <div class="col-2">col-2</div>
+                        <div class="col-2">col-2</div>
+                        <div class="col-2">col-2</div>
+                        <div class="col-2">col-2</div>
+                        <div class="col-2">col-2</div>
+                        <div class="col-2">col-2</div>
 
                 </div>
             </Panel>
@@ -202,9 +207,11 @@
 </template>
 
 <style>
-    .showCols.grid-container [class*="col-"] {
-        background-color: #fff;
+    .showCols.row [class*="col-"] {
+        background-color: rgba(165, 243, 41, 0.1);
         outline: 1px solid var(--border-color);
+        padding-top: .75rem;
+        padding-bottom: .75rem;
     }
 
     .block {

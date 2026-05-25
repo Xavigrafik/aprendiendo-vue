@@ -29,7 +29,7 @@
         border: 1px solid var(--border-color);
         border-radius: var(--radius-md);
         margin-bottom: var(--space-sm);
-        background-color: var(--bg-card, #ffffff);
+        background-color: #ffffff;
         transition: opacity 0.3s;
         box-shadow: var(--shadow-main);
         

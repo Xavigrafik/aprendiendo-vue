@@ -23,7 +23,7 @@
                 <div class="modal-container" @click.stop>
 
                     <header class="modal-header">
-                        <h2>{{ modalStore.title }}</h2>
+                        <div>{{ modalStore.title }}</div>
                         <button class="close-btn" @click="modalStore.handleCancel">✖</button>
                     </header>
 
@@ -37,9 +37,9 @@
                             <div v-else-if="modalStore.type === 'custom'" v-html="modalStore.customHtml"></div>
 
                             <component 
-                            v-else-if="modalStore.type === 'component'"
-                            :is="modalStore.component" 
-                            v-bind="modalStore.componentProps" ></component>
+                                v-else-if="modalStore.type === 'component'"
+                                :is="modalStore.component" 
+                                v-bind="modalStore.componentProps" ></component>
                             
                         </main>
                     </Transition>
@@ -70,13 +70,13 @@
                             {{ modalStore.cancelBtnText || 'Cerrar' }}
                         </Button>
 
-                        <!-- <Button 
+                        <Button 
                             v-if="modalStore.type === 'component'" 
                             variant="outline"
                             @click="modalStore.handleCancel"
                         >
                             {{ modalStore.cancelBtnText || 'Cerrar'   }}
-                        </Button> -->
+                        </Button>
 
                     </footer>
 
@@ -158,7 +158,13 @@
         justify-content: space-between;
         align-items: flex-start;
         border-bottom: 1px solid var(--border-color);
-        padding: var(--space-md) var(--space-xl);
+        padding: var(--space-lg) var(--space-xl);
+
+        & > * {
+            margin: 0;
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-bold);
+        }
 
         .close-btn {
             width: 40px;

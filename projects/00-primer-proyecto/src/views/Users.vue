@@ -14,7 +14,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="grid-container">
+    <div class="row centered">
         <div class="col-10">
             <div class="users-container">
                 <h2>Directorio de Usuarios: {{ totalUsers }}</h2>
