@@ -62,7 +62,7 @@
     
     <div class="row centered">
         <div class="col-10">
-            
+
             <h1>Welcome to the Design System Page</h1>
 
             
@@ -82,10 +82,10 @@
                     <section class="block">
                         
                         <h5>Sizes :</h5>
-                        <Button size="xs">Button xs</Button>
-                        <Button size="sm">Button sm</Button>
-                        <Button size="md">Button md</Button>
-                        <Button size="lg">Button lg</Button>
+                        <Button size="xs">Button XS</Button>
+                        <Button size="sm">Button SM</Button>
+                        <Button size="md">Button MD</Button>
+                        <Button size="lg">Button LG</Button>
                     </section>
 
                     <section class="block">
@@ -99,13 +99,13 @@
                         <Button variant="danger">Danger</Button>
                         <Button variant="icon">★</Button>
                         
-                        <h5>Pill :</h5>
-                        <Button pill variant="primary">Primary</Button>
-                        <Button pill variant="secondary">Secondary</Button>
-                        <Button pill variant="tertiary">Tertiary</Button>
-                        <Button pill variant="outline">Outline</Button>
-                        <Button pill variant="danger">Danger</Button>
-                        <Button pill variant="icon">★</Button>
+                        <h5>squared :</h5>
+                        <Button squared variant="primary">Primary</Button>
+                        <Button squared variant="secondary">Secondary</Button>
+                        <Button squared variant="tertiary">Tertiary</Button>
+                        <Button squared variant="outline">Outline</Button>
+                        <Button squared variant="danger">Danger</Button>
+                        <Button squared variant="icon">★</Button>
                         
                         <h5>Variants hover :</h5>
                         <Button class="is-hovered" variant="primary">Primary</Button>

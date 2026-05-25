@@ -49,6 +49,7 @@
             display: -webkit-box;
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 2;
+            line-clamp: 2;
         }
         &-description {
             max-height: 5lh;
@@ -57,6 +58,7 @@
             display: -webkit-box;
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 5;
+            line-clamp: 5;
         }
 
         &-check {

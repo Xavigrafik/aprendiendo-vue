@@ -14,7 +14,7 @@
             type: String,
             default: 'primary', // 'primary', 'secondary', 'tertiary' 'danger', 'outline', icon
         },
-        pill: {
+        squared: {
             type: Boolean,
             default: false, 
         },
@@ -53,20 +53,20 @@
 </script>
 
 <template>
-    <component :is="tag" :to="to" :class="['btn', `btn-${variant}`, `size-${size}`, { 'is-loading': loading },  { 'rounded-pill': pill }]"
+    <component :is="tag" :to="to" :class="['btn', `btn-${variant}`, `size-${size}`, { 'is-loading': loading },  { 'squared': squared }]"
         :type="type" :disabled="disabled || loading" @click="handleClick">
         <i v-if="icon && !loading" :class="['icon', `${icon}`]">{{icon}}</i>
         <span v-if="loading" class="loader"></span>
-        <slot v-else />
+        <slot/>
     </component>
 </template>
 
 <style lang="scss" scoped>
     .btn {
-        padding: 10px 20px;
+        padding:var(--space-sm) var(--space-sm);
         margin-bottom: var(--space-sm);
         margin-right: var(--space-sm);
-        border-radius: var(--radius-sm);
+        border-radius: var(--radius-full);
         font-weight: 600;
         cursor: pointer;
         transition: var(--transition-out);
@@ -76,14 +76,16 @@
         justify-content: center;
         gap: 8px;
         text-decoration: none;
-
-
-        // Aplicación de colores usando OKLCH para el hover
         background-color: var(--btn-bg);
         color: var(--btn-color);
 
         &:focus:not(:disabled) {
             box-shadow: 0 0 0 .2rem oklch(from var(--btn-bg) calc(l + 0.12) c h);
+        }
+        &:focus-visible:not(:disabled) {
+            box-shadow: 0 0 0 2px oklch(from var(--btn-bg) calc(l + 0.25) c h);
+            outline: 3px solid oklch(from var(--btn-bg) calc(l - 0.25) c h);
+            outline-offset: 2px;
         }
 
         &.is-hovered:not(:disabled),
@@ -108,8 +110,8 @@
             cursor: not-allowed;
         }
 
-        &.rounded-pill {
-            border-radius: var(--radius-full)!important;
+        &.squared {
+            border-radius: var(--radius-sm)!important;
         }
 
         // Variantes definiendo solo el color base
@@ -129,6 +131,7 @@
             &.is-hovered:not(:disabled),
             &:hover:not(:disabled) {
                 color: oklch(from var(--btn-color) calc(l - var(--darkenBtn)) c h);
+                background-color: oklch(from var(--btn-color) l c h / var(--darkenBtn));
                 box-shadow: 0 0 0 .2rem oklch(from var(--btn-bg) calc(l - 0.01) c h);
             }
         }
@@ -139,7 +142,8 @@
         }
 
         &-icon {
-            padding: 0;
+            --btn-bg: oklch(69% 0.14 149);
+            padding: 0!important;
             width: 40px;
             height: 40px;
             border-radius: var(--radius-full);
@@ -159,7 +163,7 @@
 
         &.size-xs {
             font-size: 0.65rem;
-            padding: 6px 14px;
+            padding: var(--space-xs) var(--space-sm);
             gap: 6px;
             font-weight: normal;
 
@@ -171,7 +175,7 @@
 
         &.size-sm {
             font-size: 0.75rem;
-            padding: 6px 14px;
+            padding: var(--space-sm) var(--space-md);
             gap: 6px;
 
             .loader {
@@ -182,16 +186,20 @@
 
         &.size-md {
             font-size: 0.875rem;
-            padding: 10px 20px;
+            padding: var(--space-md) var(--space-lg);
             gap: 8px;
-            border-radius: var(--radius-md);
+            &.squared {
+                border-radius: var(--radius-md);
+            }
         }
 
         &.size-lg {
             font-size: 1rem;
-            padding: 14px 28px;
+            padding: var(--space-lg) var(--space-xxl);
             gap: 10px;
-            border-radius: var(--radius-md);
+            &.squared {
+                border-radius: var(--radius-md);
+            }
 
             .loader {
                 width: 20px;

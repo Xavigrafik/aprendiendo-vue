@@ -4,6 +4,7 @@
     import { ref } from "vue";
     import Button from "../components/Button.vue";
     import { useToggle } from '@/composables/useToggle';
+import DefaultComponent from "../components/DefaultComponent.vue";
 
 
     
@@ -28,6 +29,8 @@
             
             <Button @click="counter++"> Clicked  {{ counter }} times </Button>
             <Button @click="openModal"> Show modal </Button>
+
+            <!-- <DefaultComponent></DefaultComponent> -->
         </div>
         
     </div>
