@@ -9,14 +9,6 @@
     
     import { useModalStore } from '@/stores/modalStore';
     const modalStore = useModalStore();
-    const addTaskModal = () => {
-    modalStore.open({
-        type: 'component',
-        title: 'Añadir tarea:',
-        cancelBtnText: 'hidden', 
-        component: addTaskForm,
-    });
-};  
 
     import { useTasksStore } from '@/stores/tasksStore';
     const tasksStore = useTasksStore();
@@ -26,13 +18,10 @@
 
 <template>
     <section>
-        <Button @click="addTaskModal"> Add task </Button>
         <div class="tasksList col-12">
             <Task v-for="task in filteredTasks" :key="task.id" :task="task"></Task>
         </div>
     </section>
-    <!-- <addTaskForm></addTaskForm> -->
-
 </template>
 
 

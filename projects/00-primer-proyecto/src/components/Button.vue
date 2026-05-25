@@ -29,6 +29,10 @@
         loading: {
             type: Boolean,
             default: false,
+        },
+        icon: {
+            type: String,
+            default: null // 'plus', 'trash', 'edit'.
         }
     });
 
@@ -51,6 +55,7 @@
 <template>
     <component :is="tag" :to="to" :class="['btn', `btn-${variant}`, `size-${size}`, { 'is-loading': loading },  { 'rounded-pill': pill }]"
         :type="type" :disabled="disabled || loading" @click="handleClick">
+        <i v-if="icon && !loading" :class="['icon', `${icon}`]">{{icon}}</i>
         <span v-if="loading" class="loader"></span>
         <slot v-else />
     </component>
@@ -58,9 +63,6 @@
 
 <style lang="scss" scoped>
     .btn {
-
-
-
         padding: 10px 20px;
         margin-bottom: var(--space-sm);
         margin-right: var(--space-sm);
@@ -218,5 +220,14 @@
         to {
             transform: rotate(360deg);
         }
+    }
+
+    .icon {
+        outline: 1px solid white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
     }
 </style>
