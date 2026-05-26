@@ -151,17 +151,21 @@
                 <section class="block">
 
                     <div class="color" style="background-color:var(--color-primary)">primary</div>
-                    <div class="color" style="background-color:var(--color-primary-dark)">primary-dark</div>
                     <div class="color" style="background-color:var(--color-secondary)">secondary</div>
+                    <div class="divider"></div>
+                    <div class="color" style="background-color:var(--color-primary-dark)">primary-dark</div>
+                    <div class="color" style="background-color:var(--color-primary-light)">primary-light</div>
+                    <div class="color" style="background-color:var(--color-secondary-dark)">secondary-dark</div>
+                    <div class="color" style="background-color:var(--color-secondary-light)">secondary-light</div>
                     <div class="divider"></div>
                     <div class="color" style="background-color:var(--color-success)">success</div>
                     <div class="color" style="background-color:var(--color-error)">error</div>
-                    <div class="color" style="background-color:var(--color-warning)">warning</div>
+                    <div class="color text-dark" style="background-color:var(--color-warning)">warning</div>
                     <div class="color" style="background-color:var(--color-info)">info</div>
                     <div class="divider"></div>
 
-                    <div class="color" style="background-color:var(--color-white)">white</div>
-                    <div class="color" style="background-color:var(--color-gray-100)">gray-100</div>
+                    <div class="color text-dark" style="background-color:var(--color-white)">white</div>
+                    <div class="color text-dark" style="background-color:var(--color-gray-100)">gray-100</div>
                     <div class="color" style="background-color:var(--color-gray-500)">gray-500</div>
                     <div class="color" style="background-color:var(--color-gray-900)">gray-900</div>
                     <div class="color" style="background-color:var(--color-black)">black</div>
@@ -236,14 +240,17 @@
         }
 
         .color {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             display: flex;
             border-radius: var(--radius-sm);
             align-items: flex-end;
             justify-content: center;
             color: #fff;
             padding-bottom: 0.5rem;
+            &.text-dark {
+                color: var(--color-gray-900);
+            }
         }
     }
 </style>

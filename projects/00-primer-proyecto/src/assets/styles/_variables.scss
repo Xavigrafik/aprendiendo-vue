@@ -1,9 +1,13 @@
 :root {
     // --- COLORES PRIMARIOS ---
-    --color-primary: #42b883; // Verde Vue
-    --color-primary-dark: #35495e;
-    --color-primary-light: #66ecb0;
+    --color-primary: #42b883;
+    --color-primary-light:  oklch(from var(--color-primary) calc(l + 0.15) c h);
+    --color-primary-dark:  oklch(from var(--color-primary) calc(l - 0.15) c h);
+    
     --color-secondary: #263c54;
+    --color-secondary-light:  oklch(from var(--color-secondary) calc(l + 0.15) c h);
+    --color-secondary-dark:  oklch(from var(--color-secondary) calc(l - 0.15) c h);
+    
 
     // --- COLORES DE ESTADO ---
     --color-success: #2ecc71;
@@ -47,7 +51,7 @@
     --radius-md: 8px;
     --radius-full: 999em;
     --shadow-main: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --transition-fast: 0.2s ease;
+
 
     /* Fondos y Superficies */
     --bg-primary: oklch(98% 0.01 240);
@@ -101,16 +105,22 @@
     --shadow-md: 0 8px 16px oklch(25% 0.04 240 / 0.06);
     --shadow-lg: 0 16px 40px oklch(25% 0.04 240 / 0.1);
 
+
+    --transition-fast: 0.2s ease;
     --transition-in:
-        transform 0.1s cubic-bezier(0.33, 1, 0.68, 1),
+        transform 0.15s cubic-bezier(0.33, 1, 0.68, 1),
         background-color 0.15s ease-out,
         color 0.15s ease-out,
+        border-color 0.15s ease-out,
+        box-shadow 0.15s ease-out,
         opacity 0.15s ease-out;
 
     --transition-out:
         transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
         background-color 0.3s ease,
         color 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
         opacity 0.3s ease;
 
     // BREAKPOINTS

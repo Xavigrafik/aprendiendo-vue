@@ -100,8 +100,6 @@
         &.is-hovered:not(:disabled),
         &:hover:not(:disabled) {
             transition: var(--transition-in);
-            // 🚀 Si el botón original era transparente, mutamos a un fondo sutil con opacidad (/)
-            // Si era opaco, lo oscurecemos de manera estándar
             background-color: oklch(from var(--btn-brand) calc(l - var(--darkenBtn)) c h / var(--btn-hover-alpha, 1));
             border-color: oklch(from var(--btn-brand) calc(l - var(--darkenBtn)) c h / var(--btn-hover-alpha, 1));
             box-shadow: 0 0 0 var(--border-width) oklch(from var(--btn-brand) calc(l - var(--darkenBtn)) c h);
@@ -109,11 +107,16 @@
 
         &:active:not(:disabled),
         &.active:not(:disabled) {
-            background-color: oklch(from var(--btn-brand) calc(l - 0.33) c h);
-            border-color: oklch(from var(--btn-brand) calc(l - 0.1) c h);
-            box-shadow: 0px 0px 0px var(--border-width) oklch(from var(--btn-brand) calc(l - 0.33) c h);
-            transition: all 50ms ease;
-            outline: none;
+            transform: none; 
+        
+        // Damos un salto de color instantáneo para que el usuario note el "clic" en la pantalla
+        background-color: oklch(from var(--btn-brand) calc(l - 0.18) c h / var(--btn-hover-alpha, 1));
+        border-color: oklch(from var(--btn-brand) calc(l - 0.18) c h / var(--btn-hover-alpha, 1));
+        box-shadow: 0px 0px 0px 2px oklch(from var(--btn-brand) calc(l - 0.18) c h);
+        
+        // Transición hiper-rápida para que el cambio cromático sea inmediato al pulsar
+        transition: background-color 40ms ease, border-color 40ms ease, box-shadow 40ms ease;
+        outline: none;
         }
 
         &:disabled {
@@ -130,16 +133,20 @@
             --btn-brand: var(--color-primary);
             --btn-bg: var(--btn-brand);
             --btn-color: white;
+            --btn-hover-alpha: 0.85;
+            --darkenBtn: 0.1;
         }
-
+        
         &-secondary {
             --btn-brand: var(--color-secondary);
             --btn-bg: var(--btn-brand);
             --btn-color: white;
+            --btn-hover-alpha: 0.75;
+            --darkenBtn: 0.3;
         }
 
         &-tertiary {
-            --btn-brand: oklch(from var(--color-primary) l c h);
+            --btn-brand: var(--color-primary);
             --btn-bg: transparent;
             --btn-color: var(--btn-brand);
             
@@ -157,7 +164,6 @@
             --darkenBtn: 0;
 
             border-color: var(--btn-brand);
-            border-width: 2px; 
 
             &:hover:not(:disabled) {
                 border-color: oklch(from var(--btn-brand) l c h);
@@ -169,6 +175,8 @@
             --btn-brand: var(--color-error);
             --btn-bg: var(--btn-brand);
             --btn-color: white;
+            --btn-hover-alpha: 0.75; 
+            --darkenBtn: 0.3;
         }
 
         &-icon {
