@@ -86,6 +86,8 @@
     --btn-bg: --color-primary-dark;
     --btn-color: white;
     --darkenBtn: 0.2;
+    --darkBtn: oklch(from var(--btn-bg) calc(l + 0.12) c h);
+    --lightBtn: oklch(from var(--btn-bg) calc(l - 0.12) c h);
 
 
     /* Gradientes utilizando OKLCH para máxima pureza */
