@@ -4,7 +4,7 @@
 <template>
   <main>
      <div class="home">
-    <h1>This is an Home page</h1>
+    <h1>This is an HOME page</h1>
   </div>
   </main>
 </template>
@@ -12,9 +12,11 @@
 <style>
 @media (min-width: 1024px) {
   .home {
-    min-height: 100vh;
+    background-color: lightblue;
     display: flex;
     align-items: center;
+    padding: 2rem;
+    min-height: 350px;
   }
 }
 </style>
