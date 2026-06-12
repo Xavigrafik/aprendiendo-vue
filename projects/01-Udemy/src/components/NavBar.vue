@@ -19,7 +19,7 @@ interface Props {
 
 <template>
 
-    <nav>
+    <nav class="nav-bar " :class="{ 'nav-bar--secondary': isSecondary }">
 
         <template v-if="!isSecondary">
             <h1>{{ title }}</h1> 
@@ -47,6 +47,12 @@ interface Props {
         justify-content: center;
         align-items: center;
         gap: 1rem;
+        
+        &.nav-bar--secondary {
+            background-color: white;
+            padding: 0.5rem;
+            border-bottom: 1px solid var(--color-border);
+        }
     }
     
 

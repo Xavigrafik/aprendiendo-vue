@@ -18,7 +18,6 @@
 <template>
     <div class="pokemon-layout">
         <NavBar :links="routeLinks" is-secondary></NavBar>
-        <h1>Pokemon Layout</h1>
         <RouterView />
     </div>
 </template>
