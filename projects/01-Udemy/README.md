@@ -44,4 +44,4 @@ npm run build
 
 # Progreso: 
 
- seccion 3, leccion 23
+ seccion 3, leccion 27
