@@ -18,7 +18,12 @@
 <template>
     <div class="pokemon-layout">
         <NavBar :links="routeLinks" is-secondary></NavBar>
-        <RouterView />
+        <Suspense>
+            <RouterView />
+             <template #fallback>
+                Loading...
+            </template>
+        </Suspense>
     </div>
 </template>
 
