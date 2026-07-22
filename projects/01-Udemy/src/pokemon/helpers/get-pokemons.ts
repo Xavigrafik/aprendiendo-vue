@@ -5,7 +5,7 @@ import { sleep } from './sleep';
 
 export const getPokemons = async(): Promise<Pokemon[]> => {
 
-  await sleep(2);
+//   await sleep(2);
 
   const { data } = await pokemonApi.get<PokemonListResponse>('/pokemon?limit=45');
   
