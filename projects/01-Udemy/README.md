@@ -40,8 +40,8 @@ npm run dev
 ```sh
 npm run build
 ```
-
+ 
 
 # Progreso: 
 
- seccion 3, leccion 36
+ seccion 4, leccion 40

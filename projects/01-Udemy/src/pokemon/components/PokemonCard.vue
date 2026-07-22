@@ -28,11 +28,16 @@
         align-items: center;
         margin-bottom: 1.2rem;
         cursor: pointer;
+
+        h3 {
+            text-transform: capitalize;
+            font-size: 0.875rem;
+        }
     }
     
     img {
         border: 2px solid rgba(0, 0, 0, 0.15);
-        width: 150px;
+        width: 100px;
         border-radius: 5px;
         box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
         transition: transform 0.2s ease, box-shadow 0.2s ease;
