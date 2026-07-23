@@ -13,7 +13,7 @@ VueQueryPlugin.install(app, {
   queryClientConfig: {
     defaultOptions: {
       queries: {
-        gcTime: 1000 * 120, // 2 minutes
+        cacheTime: 1000 * 120, // 2 minutes
         refetchOnReconnect: 'always',
       }
     }
