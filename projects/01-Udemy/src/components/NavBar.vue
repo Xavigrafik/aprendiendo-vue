@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import type { RouterLink as MyRouterLinkType } from "@/router/list.routes.ts";
-    import defaultLinks from "@/router/list.routes.ts";
+    import defaultLinks from "@/router/list.routes";
 
 interface Props {
     title?: string;
@@ -15,6 +15,8 @@ interface Props {
         links: () => defaultLinks 
     });
 
+    
+
 </script>
 
 <template>
@@ -27,7 +29,7 @@ interface Props {
 
         <ul>
             <li v-for="link in props.links" :key="link.path">
-                <RouterLink :to="link.path">{{ link.title }}</RouterLink>
+                <RouterLink :to="link.path" v-if="link.visible">{{ link.title }}</RouterLink>
             </li>
         </ul>
     </nav>

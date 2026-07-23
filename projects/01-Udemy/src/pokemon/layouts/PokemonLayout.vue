@@ -11,6 +11,7 @@
             name: name?.toString() ?? '',
             path: path, 
             title: (props as { title: string })?.title ?? name?.toString() ?? 'Sin título',
+            visible: (props as { visible: boolean })?.visible ?? true
         }
     });
 </script>
