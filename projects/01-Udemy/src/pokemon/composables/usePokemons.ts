@@ -1,16 +1,18 @@
-import { computed,watchEffect } from "vue";
+import { computed, watchEffect } from "vue";
 import { useQuery } from "@tanstack/vue-query";
 
 import { getPokemons } from "../helpers/get-pokemons";
+import { initialPokemons } from "../data/initial-pokemons";
+
 
 export const usePokemons = () => {
 
-    const { isLoading, isError, data: pokemons, error } = useQuery(
+    const { isLoading, data: pokemons, isError, error } = useQuery(
         ['pokemons'],
         getPokemons,
         {
             retry: 0,
-            retryDelay: 1000,
+            initialData: initialPokemons,
         }
     );
 
@@ -29,5 +31,5 @@ export const usePokemons = () => {
 
         // Computed
         count: computed(() => pokemons.value?.length ?? 0),
-    };
-};
+    }
+}

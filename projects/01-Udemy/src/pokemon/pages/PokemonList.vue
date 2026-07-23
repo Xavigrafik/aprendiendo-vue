@@ -8,7 +8,7 @@
 </script>
 
 <template>
-    <h1 v-if="isLoading">Loading</h1>
+    <h1 v-if="isLoading">Loading...</h1>
 
     <div v-else-if="isError">
         {{ error }}

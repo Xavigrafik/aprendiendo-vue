@@ -27,7 +27,8 @@ const store = reactive<Store>({
     isLoading: false,
     hasError: false,
     errorMessage: undefined
-  },
+    },
+    
   startLoadingPokemons: async function (): Promise<void> {
     this.pokemons = {
       ...this.pokemons,

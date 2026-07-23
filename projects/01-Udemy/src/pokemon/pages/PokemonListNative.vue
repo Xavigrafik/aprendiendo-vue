@@ -20,7 +20,7 @@
 </script>
 
 <template>
-  <h1 v-if="store.pokemons.isLoading">Loading</h1>
+  <h1 v-if="store.pokemons.isLoading">Loading...</h1>
 
   <div v-else-if="store.pokemons.hasError">
     {{ store.pokemons.errorMessage }}
