@@ -1,17 +1,13 @@
 import { computed,watchEffect } from "vue";
 import { useQuery } from "@tanstack/vue-query";
 
-import { getPokemons } from "../helpers/get-pokemons";
+import { getPokemonById } from "@/pokemon/helpers/get-pokemon-by-id";
 
-export const usePokemons = () => {
+export const usePokemon = (id: string) => {
 
-    const { isLoading, isError, data: pokemons, error } = useQuery(
-        ['pokemons'],
-        getPokemons,
-        {
-            retry: 0,
-            retryDelay: 1000,
-        }
+    const { isLoading, isError, data: pokemon, error } = useQuery(
+        ['pokemon', id],
+        () => getPokemonById(id)
     );
 
     watchEffect(() => {
@@ -22,12 +18,9 @@ export const usePokemons = () => {
 
     return {
         // Properties
-        pokemons,
+        pokemon,
         isLoading,
         isError,
         error,
-
-        // Computed
-        count: computed(() => pokemons.value?.length ?? 0),
     };
 };
