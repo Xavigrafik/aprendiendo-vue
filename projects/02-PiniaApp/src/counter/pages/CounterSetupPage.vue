@@ -18,7 +18,7 @@ const { increment, incrementBy } = counterStore;
     <button @click="increment()">+1</button>
     <button @click="incrementBy(2)">+2</button>
     <button @click="incrementBy(5)">+5</button>
-    <button @click="counterStore.$reset()">Reset</button>
+    <!-- <button @click="counterStore.$reset()">Reset ?¿?¿</button> -->
 
     <br>
     <CounterSetupValue />
